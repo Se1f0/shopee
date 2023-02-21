@@ -9,13 +9,16 @@ class DetailsComponent extends Component
 {
     public $slug;
 
-    public function mount(string $slug) {
+    public function mount(string $slug)
+    {
         $this->slug = $slug;
     }
 
     public function render()
     {
         $product = Product::where('slug', $this->slug)->first();
-        return view('livewire.details-component' , ['product' => $product]);
+        $rproducts = Product::where('category_id', $product->category_id)->inRandomOrder()->limit(6)->get();
+        $nproducts = Product::Latest()->take(5)->get();
+        return view('livewire.details-component', ['product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts]);
     }
 }
