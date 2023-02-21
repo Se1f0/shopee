@@ -248,7 +248,7 @@
                                                 <ul class="minicart-product-list">
                                                     <li>
                                                         <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="assets/images/product/small-size/product-3.jpg') }}"
+                                                            <img src="{{ asset('assets/images/product/small-size/product-3.jpg') }}"
                                                                 alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
