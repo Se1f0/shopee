@@ -4,7 +4,7 @@
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li class="active">Shopping Cart</li>
                 </ul>
             </div>
@@ -31,7 +31,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                        <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
                                         <td class="li-product-thumbnail"><a href="#"><img
                                                     src="{{ asset('assets/images/product/small-size/product-5.jpg') }}"
                                                     alt="Li's Product Image"></a></td>
@@ -48,7 +49,8 @@
                                         <td class="product-subtotal"><span class="amount">$70.00</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                        <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a>
+                                        </td>
                                         <td class="li-product-thumbnail"><a href="#"><img
                                                     src="{{ asset('assets/images/product/small-size/product-6.jpg') }}"
                                                     alt="Li's Product Image"></a></td>
