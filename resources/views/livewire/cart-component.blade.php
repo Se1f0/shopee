@@ -41,22 +41,30 @@
                                                 <td class="li-product-remove"><a href="#"><i class="fa fa-trash"
                                                             aria-hidden="true"></i></a>
                                                 </td>
-                                                <td class="li-product-thumbnail"><a href="#"><img
+                                                <td class="li-product-thumbnail"><a
+                                                        href="{{ route('product.details', ['slug' => $item->model->slug]) }}"><img
                                                             src="{{ asset('assets/images/product/small-size/product') }}-{{ $item->model->id }}.jpg"
-                                                            alt="{{ $item->model->name }}"></a></td>
+                                                            alt="{{ $item->model->name }}"></a>
+                                                </td>
                                                 <td class="li-product-name"><a
-                                                        href="#">{{ $item->model->name }}</a>
+                                                        href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                                 </td>
                                                 <td class="li-product-price"><span
                                                         class="amount">${{ $item->model->regular_price }}</span></td>
                                                 <td class="quantity">
                                                     <label>Quantity</label>
                                                     <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1"
+                                                        <input class="cart-plus-minus-box" value="{{ $item->qty }}"
                                                             type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i>
+                                                        <div class="dec qtybutton"
+                                                            wire:click.prevent="decreaseQuantity('{{ $item->rowId }}')">
+                                                            <i class="fa fa-angle-down"></i></a>
                                                         </div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                        <div class="inc qtybutton"
+                                                            wire:click.prevent="increaseQuantity('{{ $item->rowId }}')">
+                                                            <i class="fa fa-angle-up"></i>
+
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td class="product-subtotal"><span
