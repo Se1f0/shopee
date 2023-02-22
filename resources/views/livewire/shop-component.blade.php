@@ -49,20 +49,20 @@
                             </div>
                         </div>
                         <!-- product-select-box start -->
-                        <div class="product-select-box">
+                        {{-- <div class="product-select-box">
                             <div class="product-short">
                                 <p>Sort By:</p>
                                 <select class="nice-select">
-                                    <option value="trending">Relevance</option>
-                                    <option value="sales">Name (A - Z)</option>
-                                    <option value="sales">Name (Z - A)</option>
-                                    <option value="rating">Price (Low &gt; High)</option>
-                                    <option value="date">Rating (Lowest)</option>
-                                    <option value="price-asc">Model (A - Z)</option>
-                                    <option value="price-asc">Model (Z - A)</option>
+                                    <option value="default">Default</option>
+                                    <option value="name-asc">Name (A - Z)</option>
+                                    <option value="name-desc">Name (Z - A)</option>
+                                    <option value="price-asc">Price (Low to High)</option>
+                                    <option value="price-desc">Price (High to Low)</option>
+                                    <option value="date">Newness</option>
+                                    <option value="rating">Rating (Lowest)</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- product-select-box end -->
                     </div>
                     <!-- shop-top-bar end -->
@@ -221,9 +221,9 @@
                 </div>
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--sidebar-categores-box start  -->
-                    <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
+                    {{-- <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
                         <div class="sidebar-title">
-                            <h2>Laptop</h2>
+                            <h2>Sort by</h2>
                         </div>
                         <!-- category-sub-menu start -->
                         <div class="category-sub-menu">
@@ -262,10 +262,73 @@
                             </ul>
                         </div>
                         <!-- category-sub-menu end -->
+                    </div> --}}
+                    <!--sidebar-categores-box end  -->
+                    <div class="sidebar-categores-box">
+                        <form action="#">
+                            <div class="sidebar-title">
+                                <h2>Sort By</h2>
+                            </div>
+                            <!-- btn-clear-all start -->
+                            <button class="btn-clear-all mb-sm-30 mb-xs-30"
+                                wire:click.prevent="changeOrderBy('Default')">Default</button>
+                            <!-- btn-clear-all end -->
+                            <!-- filter-sub-area start -->
+                            <div class="filter-sub-area">
+                                <h5 class="filter-sub-titel">Name</h5>
+                                <div class="categori-checkbox">
+                                    <ul>
+                                        <li wire:click.prevent="changeOrderBy('Name (A - Z)')"><input type="radio"
+                                                name="product-categori" {!! $orderBy == 'Name (A - Z)' ? 'checked' : '' !!}><a href="#">Name
+                                                (A - Z)</a>
+                                        </li>
+                                        <li wire:click.prevent="changeOrderBy('Name (Z - A)')"><input type="radio"
+                                                name="product-categori" {!! $orderBy == 'Name (Z - A)' ? 'checked' : '' !!}><a href="#">Name
+                                                (Z - A)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- filter-sub-area end -->
+                            <!-- filter-sub-area start -->
+                            <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                <h5 class="filter-sub-titel">Price</h5>
+                                <div class="categori-checkbox">
+                                    <ul>
+                                        <li wire:click.prevent="changeOrderBy('Price (Low to High)')"><input
+                                                type="radio" name="product-categori" {!! $orderBy == 'Price (Low to High)' ? 'checked' : '' !!}><a
+                                                href="#">Price (Low
+                                                to High)</a></li>
+                                        <li wire:click.prevent="changeOrderBy('Price (High to Low)')"><input
+                                                type="radio" name="product-categori" {!! $orderBy == 'Price (High to Low)' ? 'checked' : '' !!}><a
+                                                href="#">Price (High
+                                                to Low)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- filter-sub-area end -->
+                            <!-- filter-sub-area start -->
+                            <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                <h5 class="filter-sub-titel">Time</h5>
+                                <div class="size-checkbox">
+                                    <ul>
+                                        <li wire:click.prevent="changeOrderBy('Newest')"><input type="radio"
+                                                name="product-size" {!! $orderBy == 'Newest' ? 'checked' : '' !!}><a
+                                                href="#">Newest</a>
+                                        </li>
+                                        <li wire:click.prevent="changeOrderBy('Oldest')"><input type="radio"
+                                                name="product-size" {!! $orderBy == 'Oldest' ? 'checked' : '' !!}><a
+                                                href="#">Oldest</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- filter-sub-area end -->
                     </div>
                     <!--sidebar-categores-box end  -->
                     <!--sidebar-categores-box start  -->
-                    <div class="sidebar-categores-box">
+                    {{-- <div class="sidebar-categores-box">
                         <div class="sidebar-title">
                             <h2>Filter By</h2>
                         </div>
@@ -304,7 +367,8 @@
                                         <li><input type="checkbox" name="product-categori"><a href="#">Graphic
                                                 Corner
                                                 (10)</a></li>
-                                        <li><input type="checkbox" name="product-categori"><a href="#"> Studio
+                                        <li><input type="checkbox" name="product-categori"><a href="#">
+                                                Studio
                                                 Design
                                                 (6)</a></li>
                                     </ul>
@@ -318,13 +382,17 @@
                             <div class="size-checkbox">
                                 <form action="#">
                                     <ul>
-                                        <li><input type="checkbox" name="product-size"><a href="#">S (3)</a>
+                                        <li><input type="checkbox" name="product-size"><a href="#">S
+                                                (3)</a>
                                         </li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">M (3)</a>
+                                        <li><input type="checkbox" name="product-size"><a href="#">M
+                                                (3)</a>
                                         </li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">L (3)</a>
+                                        <li><input type="checkbox" name="product-size"><a href="#">L
+                                                (3)</a>
                                         </li>
-                                        <li><input type="checkbox" name="product-size"><a href="#">XL (3)</a>
+                                        <li><input type="checkbox" name="product-size"><a href="#">XL
+                                                (3)</a>
                                         </li>
                                     </ul>
                                 </form>
@@ -366,10 +434,11 @@
                             </div>
                         </div>
                         <!-- filter-sub-area end -->
-                    </div>
+                    </div> --}}
                     <!--sidebar-categores-box end  -->
+                    <!--sidebar-categores-box start  -->
                     <!-- category-sub-menu start -->
-                    <div class="sidebar-categores-box mb-sm-0 mb-xs-0">
+                    {{-- <div class="sidebar-categores-box mb-sm-0 mb-xs-0">
                         <div class="sidebar-title">
                             <h2>Laptop</h2>
                         </div>
@@ -384,7 +453,7 @@
                             </ul>
                         </div>
                         <!-- category-sub-menu end -->
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
