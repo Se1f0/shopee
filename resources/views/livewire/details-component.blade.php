@@ -1,4 +1,4 @@
-<div>
+<div style="margin-top: -20px">
     <!-- Begin Li's Breadcrumb Area -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -113,7 +113,9 @@
                                             <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                         </div>
                                     </div>
-                                    <button class="add-to-cart" type="submit">Add to cart</button>
+                                    <button class="add-to-cart"
+                                        wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                        to cart</button>
                                 </form>
                             </div>
                             <div class="product-additional-info">
@@ -203,8 +205,8 @@
                                             <div class="modal-inner-area row">
                                                 <div class="col-lg-6">
                                                     <div class="li-review-product">
-                                                        <img src="{{ asset('assets/images/product/large-size/3.jpg') }}"
-                                                            alt="Li's Product">
+                                                        <img src="{{ asset('assets/images/product/large-size/product') }}-{{ $product->id }}.jpg"
+                                                            alt="{{ $product->name }}">
                                                         <div class="li-review-product-desc">
                                                             <p class="li-product-name">Today is a good day Framed
                                                                 poster</p>
@@ -336,7 +338,9 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                    <li class="add-cart active"><a href="#"
+                                                            wire:click.prevent="store({{ $rproduct->id }} , '{{ $rproduct->name }}' , {{ $rproduct->regular_price }})">Add
+                                                            to cart</a></li>
                                                     <li><a href="#" title="quick view" class="quick-view-btn"
                                                             data-toggle="modal" data-target="#exampleModalCenter"><i
                                                                 class="fa fa-eye"></i></a></li>
@@ -400,7 +404,9 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#">Add to cart</a></li>
+                                                    <li class="add-cart active"><a href="#"
+                                                            wire:click.prevent="store({{ $nproduct->id }} , '{{ $nproduct->name }}' , {{ $nproduct->regular_price }})">Add
+                                                            to cart</a></li>
                                                     <li><a href="#" title="quick view" class="quick-view-btn"
                                                             data-toggle="modal" data-target="#exampleModalCenter"><i
                                                                 class="fa fa-eye"></i></a></li>

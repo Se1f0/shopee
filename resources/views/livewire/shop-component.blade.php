@@ -1,4 +1,4 @@
-<div>
+<div style="margin-top: -20px">
     <!-- Begin Li's Breadcrumb Area -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -112,10 +112,9 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a
-                                                                        href="shopping-cart.html">Add
-                                                                        to
-                                                                        cart</a></li>
+                                                                <li class="add-cart active"><a href="#"
+                                                                        wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                                                        to cart</a></li>
                                                                 <li><a href="#" title="quick view"
                                                                         class="quick-view-btn" data-toggle="modal"
                                                                         data-target="#exampleModalCenter"><i
@@ -182,7 +181,9 @@
                                                 <div class="col-lg-4">
                                                     <div class="shop-add-action mb-xs-30">
                                                         <ul class="add-actions-link">
-                                                            <li class="add-cart"><a href="#">Add to cart</a>
+                                                            <li class="add-cart"><a href="#"
+                                                                    wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                                                    to cart</a>
                                                             </li>
                                                             <li class="wishlist"><a href="wishlist.html"><i
                                                                         class="fa fa-heart-o"></i>Add to wishlist</a>
