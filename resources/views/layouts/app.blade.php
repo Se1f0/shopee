@@ -235,58 +235,7 @@
                                             </a>
                                         </li>
                                         <!-- Header Middle Wishlist Area End Here -->
-                                        <!-- Begin Header Mini Cart Area -->
-                                        <li class="hm-minicart">
-                                            <div class="hm-minicart-trigger">
-                                                <span class="item-icon"></span>
-                                                <span class="item-text">£160
-                                                    <span class="cart-item-count">2</span>
-                                                </span>
-                                            </div>
-                                            <span></span>
-                                            <div class="minicart">
-                                                <ul class="minicart-product-list">
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="{{ asset('assets/images/product/small-size/product-3.jpg') }}"
-                                                                alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="{{ asset('assets/images/product/small-size/product-4.jpg') }}"
-                                                                alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>£80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <p class="minicart-total">SUBTOTAL: <span>£160</span></p>
-                                                <div class="minicart-button">
-                                                    <a href="{{ route('shop.cart') }}"
-                                                        class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>View Full Cart</span>
-                                                    </a>
-                                                    <a href="{{ route('shop.checkout') }}"
-                                                        class="li-button li-button-fullwidth li-button-sm">
-                                                        <span>Checkout</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Header Mini Cart Area End Here -->
+                                        @livewire('cart-icon-component')
                                     </ul>
                                 </div>
                                 <!-- Header Middle Right Area End Here -->
