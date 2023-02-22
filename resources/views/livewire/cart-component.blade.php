@@ -38,8 +38,9 @@
                                     <tbody>
                                         @foreach (Cart::content() as $item)
                                             <tr>
-                                                <td class="li-product-remove"><a href="#"><i class="fa fa-trash"
-                                                            aria-hidden="true"></i></a>
+                                                <td class="li-product-remove"><a href="#"
+                                                        wire:click.prevent="destroy('{{ $item->rowId }}')"><i
+                                                            class="fa fa-trash" aria-hidden="true"></i></a>
                                                 </td>
                                                 <td class="li-product-thumbnail"><a
                                                         href="{{ route('product.details', ['slug' => $item->model->slug]) }}"><img
@@ -114,6 +115,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+                        @if (Session::has('success_message'))
+                            <div class="alert alert-success">
+                                <strong>Success | {{ Session::get('success_message') }}</strong>
+                            </div>
+                        @endif
                         <div class="error-wrapper text-center ptb-50 pt-xs-20">
                             <div class="error-text">
                                 <h2>No item in the cart !</h2>
