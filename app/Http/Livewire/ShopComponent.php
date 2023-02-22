@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -42,12 +43,17 @@ class ShopComponent extends Component
         } else {
             $products = Product::paginate($this->pageSize);
         }
+
         $product_count = Product::count();
         $pages = ceil($product_count / $this->pageSize);
+
+        $categories = Category::orderBy('name', 'ASC')->get();
+
         return view('livewire.shop-component', [
             'products' => $products,
             'count' => $product_count,
-            'pages' => $pages
+            'pages' => $pages,
+            'categories' => $categories
         ]);
     }
 }

@@ -334,7 +334,9 @@
                                 <h2>Filter By</h2>
                             </div>
                             <!-- btn-clear-all start -->
-                            <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
+                            <button class="btn-clear-all mb-sm-30 mb-xs-30"
+                                onclick="location.href='{{ route('shop') }}'" type="button">Clear
+                                all</button>
                             <!-- btn-clear-all end -->
                             <!-- filter-sub-area start -->
                             <div class="filter-sub-area pt-sm-10 pt-xs-10">
@@ -342,7 +344,8 @@
                                 <div class="categori-checkbox">
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li><input type="radio" name="product-categori"><a
+                                            <li><input type="radio" name="product-categori"
+                                                    {!! $category->name == $category_name ? 'checked' : '' !!}><a
                                                     href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
