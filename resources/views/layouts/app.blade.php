@@ -152,14 +152,7 @@
                                 <!-- Begin Header Middle Right Area -->
                                 <div class="header-middle-right">
                                     <ul class="hm-menu">
-                                        <!-- Begin Header Middle Wishlist Area -->
-                                        <li class="hm-wishlist">
-                                            <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count">0</span>
-                                                <i class="fa fa-heart-o"></i>
-                                            </a>
-                                        </li>
-                                        <!-- Header Middle Wishlist Area End Here -->
+                                        @livewire('wishlist-icon-component')
                                         @livewire('cart-icon-component')
                                     </ul>
                                 </div>

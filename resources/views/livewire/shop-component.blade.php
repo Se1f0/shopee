@@ -72,6 +72,11 @@
                             <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                                 <div class="product-area shop-product-area">
                                     <div class="row">
+                                        @php
+                                            $witems = Cart::instance('wishlist')
+                                                ->content()
+                                                ->pluck('id');
+                                        @endphp
                                         @foreach ($products as $product)
                                             <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                                                 <!-- single-product-wrap start -->
@@ -82,7 +87,7 @@
                                                             <img src="{{ asset('assets/images/product/large-size/product') }}-{{ $product->id }}.jpg"
                                                                 alt="{{ $product->name }}">
                                                         </a>
-                                                        <span class="sticker">New</span>
+                                                        {{-- <span class="sticker">New</span> --}}
                                                     </div>
                                                     <div class="product_desc">
                                                         <div class="product_desc_info">
@@ -115,12 +120,18 @@
                                                                 <li class="add-cart active"><a href="#"
                                                                         wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
                                                                         to cart</a></li>
-                                                                <li><a href="#" title="quick view"
+                                                                {{-- <li><a href="#" title="quick view"
                                                                         class="quick-view-btn" data-toggle="modal"
                                                                         data-target="#exampleModalCenter"><i
-                                                                            class="fa fa-eye"></i></a></li>
-                                                                <li><a class="links-details" href="wishlist.html"><i
-                                                                            class="fa fa-heart-o"></i></a></li>
+                                                                            class="fa fa-eye"></i></a></li> --}}
+                                                                @if ($witems->contains($product->id))
+                                                                    <li><a class="links-details" href="wishlist.html"><i
+                                                                                class="fa fa-heart"></i></a></li>
+                                                                @else
+                                                                    <li><a class="links-details" href="wishlist.html"
+                                                                            wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
+                                                                                class="fa fa-heart-o"></i></a></li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -143,7 +154,7 @@
                                                             <img src="{{ asset('assets/images/product/large-size/product') }}-{{ $product->id }}.jpg"
                                                                 alt="{{ $product->name }}">
                                                         </a>
-                                                        <span class="sticker">New</span>
+                                                        {{-- <span class="sticker">New</span> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-5 col-md-7">
@@ -188,10 +199,10 @@
                                                             <li class="wishlist"><a href="wishlist.html"><i
                                                                         class="fa fa-heart-o"></i>Add to wishlist</a>
                                                             </li>
-                                                            <li><a class="quick-view" data-toggle="modal"
+                                                            {{-- <li><a class="quick-view" data-toggle="modal"
                                                                     data-target="#exampleModalCenter"
                                                                     href="#"><i class="fa fa-eye"></i>Quick
-                                                                    view</a></li>
+                                                                    view</a></li> --}}
                                                         </ul>
                                                     </div>
                                                 </div>

@@ -3,15 +3,15 @@
     <li class="hm-minicart">
         <div class="hm-minicart-trigger">
             <span class="item-icon"></span>
-            <span class="item-text">${{ Cart::total() }}
-                <span class="cart-item-count">{{ Cart::count() }}</span>
+            <span class="item-text">${{ Cart::instance('cart')->total() }}
+                <span class="cart-item-count">{{ Cart::instance('cart')->count() }}</span>
             </span>
         </div>
         <span></span>
         <div class="minicart">
-            @if (Cart::count() > 0)
+            @if (Cart::instance('cart')->count() > 0)
                 <ul class="minicart-product-list">
-                    @foreach (Cart::content() as $item)
+                    @foreach (Cart::instance('cart')->content() as $item)
                         <li>
                             <a href="{{ route('product.details', ['slug' => $item->model->slug]) }}"
                                 class="minicart-product-image">
@@ -30,8 +30,8 @@
                         </li>
                     @endforeach
                 </ul>
-                <p class="minicart-total">SUBTOTAL: <span>${{ Cart::subtotal() }}</span></p>
-                <p class="minicart-total">TOTAL: <span>${{ Cart::total() }}</span></p>
+                <p class="minicart-total">SUBTOTAL: <span>${{ Cart::instance('cart')->subtotal() }}</span></p>
+                <p class="minicart-total">TOTAL: <span>${{ Cart::instance('cart')->total() }}</span></p>
                 <div class="minicart-button">
                     <a href="{{ route('shop.cart') }}"
                         class="li-button li-button-dark li-button-fullwidth li-button-sm">

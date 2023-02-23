@@ -12,7 +12,7 @@
     </div>
     <!-- Li's Breadcrumb Area End Here -->
     <!--Shopping Cart Area Strat-->
-    @if (Cart::count() > 0)
+    @if (Cart::instance('cart')->count() > 0)
         <div class="Shopping-cart-area pt-60 pb-60">
             <div class="container">
                 <div class="row">
@@ -36,7 +36,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (Cart::content() as $item)
+                                        @foreach (Cart::instance('cart')->content() as $item)
                                             <tr>
                                                 <td class="li-product-remove"><a href="#"
                                                         wire:click.prevent="destroy('{{ $item->rowId }}')"><i
@@ -95,10 +95,12 @@
                                     <div class="cart-page-total">
                                         <h2>Cart totals</h2>
                                         <ul>
-                                            <li>Subtotal <span>${{ Cart::subtotal() }}</span></li>
-                                            <li>Tax ({{ config('cart.tax') }}%)<span>${{ Cart::tax() }}</span></li>
+                                            <li>Subtotal <span>${{ Cart::instance('cart')->subtotal() }}</span></li>
+                                            <li>Tax
+                                                ({{ config('cart.tax') }}%)<span>${{ Cart::instance('cart')->tax() }}</span>
+                                            </li>
                                             <li>Shipping <span>Free</span></li>
-                                            <li>Total <span>${{ Cart::total() }}</span></li>
+                                            <li>Total <span>${{ Cart::instance('cart')->total() }}</span></li>
                                         </ul>
                                         <a href="#">Proceed to checkout</a>
                                     </div>
