@@ -5,8 +5,7 @@
             <div class="breadcrumb-content">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="{{ route('shop') }}">Shop</a></li>
-                    <li class="active">{{ $category_name }}</li>
+                    <li class="active">Shop</li>
                 </ul>
             </div>
         </div>
@@ -236,7 +235,7 @@
                                         <div class="error-wrapper text-center ptb-50 pt-xs-20">
                                             <div class="error-text">
                                                 <h1>404</h1>
-                                                <h2>No item found in this category</h2>
+                                                <h2>No item found containing '{{ $q }}'</h2>
                                                 <p>Browse the shop to view all the products.</p>
                                             </div>
                                             <div class="error-button">
@@ -249,6 +248,7 @@
                         </div>
                         <!-- Error 404 Area End -->
                     @endif
+
                 </div>
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--sidebar-categores-box start  -->
@@ -365,9 +365,7 @@
                                 <h2>Filter By</h2>
                             </div>
                             <!-- btn-clear-all start -->
-                            <button class="btn-clear-all mb-sm-30 mb-xs-30"
-                                onclick="location.href='{{ route('shop') }}'" type="button">Clear
-                                all</button>
+                            <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
                             <!-- btn-clear-all end -->
                             <!-- filter-sub-area start -->
                             <div class="filter-sub-area pt-sm-10 pt-xs-10">
@@ -375,8 +373,7 @@
                                 <div class="categori-checkbox">
                                     <ul>
                                         @foreach ($categories as $category)
-                                            <li><input type="radio" name="product-categori"
-                                                    {!! $category->name == $category_name ? 'checked' : '' !!}><a
+                                            <li><input type="radio" name="product-categori"><a
                                                     href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach
