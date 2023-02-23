@@ -14,6 +14,11 @@
     <!-- Li's Breadcrumb Area End Here -->
     <!-- content-wraper start -->
     <div class="content-wraper">
+        @php
+            $witems = Cart::instance('wishlist')
+                ->content()
+                ->pluck('id');
+        @endphp
         <div class="container">
             <div class="row single-product-area">
                 <div class="col-lg-5 col-md-6">
@@ -106,16 +111,32 @@
                                                 style="color: darkgreen">{{ $product->stock_status }}</span> </label>
                                         <label> Total quantity : <span
                                                 style="color: darkgreen">{{ $product->quantity }}</span> </label>
-                                        <label>Selected Quantity</label>
+                                        {{-- <label>Selected Quantity</label>
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="1" type="text">
-                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                            <input class="cart-plus-minus-box" value="{{ $qty }}"
+                                                type="text" disabled>
+                                            <div class="dec qtybutton" wire:click.prevent="decreaseQuantity()">
+                                                <i class="fa fa-angle-down"></i></a>
+                                            </div>
+                                            <div class="inc qtybutton" wire:click.prevent="increaseQuantity()">
+                                                <i class="fa fa-angle-up"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button class="add-to-cart"
-                                        wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
-                                        to cart</button>
+                                    </div> --}}
+                                        <button class="add-to-cart"
+                                            wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                            to cart</button>
+                                        @if ($witems->contains($product->id))
+                                            <button class="add-to-cart"
+                                                wire:click.prevent="removeFromWishlist({{ $product->id }})"
+                                                style="background-color: orange">Remove
+                                                from wishlist</button>
+                                        @else
+                                            <button class="add-to-cart"
+                                                wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"
+                                                style="background-color: orange">Add
+                                                to wishlist</button>
+                                        @endif
                                 </form>
                             </div>
                             <div class="product-additional-info">
