@@ -69,7 +69,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="product-subtotal"><span
-                                                        class="amount">$${{ $item->subtotal }}</span></td>
+                                                        class="amount">${{ $item->subtotal }}</span></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
