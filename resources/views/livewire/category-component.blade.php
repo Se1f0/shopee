@@ -24,7 +24,8 @@
                         </a>
                     </div>
                     <!-- Li's Banner Area End Here -->
-                    <!-- shop-top-bar start -->
+                    @if ($products->count() > 0)
+                        <!-- shop-top-bar start -->
                     <div class="shop-top-bar mt-30">
                         <div class="shop-bar-inner">
                             <div class="product-view-mode">
@@ -219,6 +220,28 @@
                         </div>
                     </div>
                     <!-- shop-products-wrapper end -->
+                    @else
+                        <!-- Error 404 Area Start -->
+            <div class="error404-area pt-30 pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="error-wrapper text-center ptb-50 pt-xs-20">
+                                <div class="error-text">
+                                    <h1>404</h1>
+                                    <h2>No item found in this category</h2>
+                                    <p>Browse the shop to view all the products.</p>
+                                </div>
+                                <div class="error-button">
+                                    <a href="{{ route('shop') }}">Browse the Shop</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Error 404 Area End -->
+                    @endif
                 </div>
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--sidebar-categores-box start  -->
