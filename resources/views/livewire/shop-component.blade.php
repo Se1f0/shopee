@@ -125,10 +125,11 @@
                                                                         data-target="#exampleModalCenter"><i
                                                                             class="fa fa-eye"></i></a></li> --}}
                                                                 @if ($witems->contains($product->id))
-                                                                    <li><a class="links-details" href="wishlist.html"><i
+                                                                    <li><a class="links-details" href="#"
+                                                                            wire:click.prevent="removeFromWishlist({{ $product->id }})"><i
                                                                                 class="fa fa-heart"></i></a></li>
                                                                 @else
-                                                                    <li><a class="links-details" href="wishlist.html"
+                                                                    <li><a class="links-details" href="#"
                                                                             wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
                                                                                 class="fa fa-heart-o"></i></a></li>
                                                                 @endif
@@ -145,6 +146,11 @@
                             <div id="list-view" class="tab-pane fade product-list-view" role="tabpanel">
                                 <div class="row">
                                     <div class="col">
+                                        @php
+                                            $witems = Cart::instance('wishlist')
+                                                ->content()
+                                                ->pluck('id');
+                                        @endphp
                                         @foreach ($products as $product)
                                             <div class="row product-layout-list">
                                                 <div class="col-lg-3 col-md-5 ">
@@ -196,9 +202,19 @@
                                                                     wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
                                                                     to cart</a>
                                                             </li>
-                                                            <li class="wishlist"><a href="wishlist.html"><i
-                                                                        class="fa fa-heart-o"></i>Add to wishlist</a>
-                                                            </li>
+                                                            @if ($witems->contains($product->id))
+                                                                <li class="wishlist"><a href="#"
+                                                                        wire:click.prevent="removeFromWishlist({{ $product->id }})"><i
+                                                                            class="fa fa-heart"></i>Remove from
+                                                                        wishlist</a>
+                                                                </li>
+                                                            @else
+                                                                <li class="wishlist"><a href="#"
+                                                                        wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})"><i
+                                                                            class="fa fa-heart-o"></i>Add to
+                                                                        wishlist</a>
+                                                                </li>
+                                                            @endif
                                                             {{-- <li><a class="quick-view" data-toggle="modal"
                                                                     data-target="#exampleModalCenter"
                                                                     href="#"><i class="fa fa-eye"></i>Quick
