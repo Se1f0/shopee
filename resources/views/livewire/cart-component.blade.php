@@ -124,14 +124,14 @@
                         @endif
                         <div class="error-wrapper text-center ptb-50 pt-xs-20">
                             <div class="error-text">
-                                <h2>No item in the cart !</h2>
-                                <p>Browse the shop page and add items into the cart</p>
+                                <h2>No items in the cart !</h2>
+                                <p>Browse the shop page and add items to your cart</p>
                             </div>
                             <div class="error-button">
-                                <a href="index.html">to the shop page</a>
+                                <a href="{{ route('shop') }}">to the shop page</a>
                             </div>
                             <div class="error-button">
-                                <a href="index.html">Back to home page</a>
+                                <a href="/">Back to home page</a>
                             </div>
                         </div>
                     </div>
