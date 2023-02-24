@@ -30,8 +30,7 @@
                                 <div class="col-md-12 col-12 mb-20">
                                     <label>Category Name</label>
                                     <input class="mb-0" type="text" name="name" placeholder="Category Name"
-                                        required autofocus autocomplete="name" wire:model="name"
-                                        wire:keyup="generateSlug">
+                                        autofocus autocomplete="name" wire:model="name" wire:keyup="generateSlug">
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -39,7 +38,7 @@
                                 <div class="col-md-12 mb-20">
                                     <label>Category Slug</label>
                                     <input class="mb-0" type="text" name="slug" placeholder="Category Slug"
-                                        required wire:model="slug">
+                                        wire:model="slug">
                                     @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
