@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Image;
 
 class AdminAddProductComponent extends Component
 {
@@ -59,7 +60,14 @@ class AdminAddProductComponent extends Component
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
-        $this->image->storeAs('product\large-size', $imageName);
+        $resizedImageLarge = Image::make($this->image->getRealPath());
+        $resizedImageSmall = Image::make($this->image->getRealPath());
+        $resizedImageLarge->resize(300, 300);
+        $resizedImageSmall->resize(150, 150);
+        $path_large = public_path() . '\assets\images\product\large-size\\' . $imageName;
+        $path_small = public_path() . '\assets\images\product\small-size\\' . $imageName;
+        $resizedImageLarge->save($path_large);
+        $resizedImageSmall->save($path_small);
         $product->image = $imageName;
         $product->category_id = $this->category_id;
         $product->save();

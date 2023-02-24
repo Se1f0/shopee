@@ -16,6 +16,7 @@ class AdminProductComponent extends Component
     {
         $product = Product::find($this->product_id);
         unlink('assets/images/product/large-size/' . $product->image);
+        unlink('assets/images/product/small-size/' . $product->image);
         $product->delete();
         session()->flash('message', 'Product has been deleted successfully!');
     }
