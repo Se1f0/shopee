@@ -181,7 +181,7 @@
                                                     @if (Auth::user()->utype == 'ADM')
                                                         <ul class="hb-dropdown">
                                                             <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                                            <li><a href="#">Products</a></li>
+                                                            <li><a href="{{ route('admin.products') }}">Products</a></li>
                                                             <li><a href="{{ route('admin.categories') }}">Categories</a></li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
