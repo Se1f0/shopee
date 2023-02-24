@@ -15,7 +15,7 @@
                         <li>
                             <a href="{{ route('product.details', ['slug' => $item->model->slug]) }}"
                                 class="minicart-product-image">
-                                <img src="{{ asset('assets/images/product/small-size') }}/{{ $item->model->image }}.jpg"
+                                <img src="{{ asset('assets/images/product/small-size') }}/{{ $item->model->image }}"
                                     alt="{{ $item->model->name }}">
                             </a>
                             <div class="minicart-product-details">

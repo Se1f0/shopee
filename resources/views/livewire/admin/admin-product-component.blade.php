@@ -52,7 +52,7 @@
                                             <td class="li-product-price"><span class="amount">{{ $product->id }}</span>
                                             </td>
                                             <td class="li-product-thumbnail"><img
-                                                    src="{{ asset('assets/images/product/small-size') }}/{{ $product->image }}.jpg"
+                                                    src="{{ asset('assets/images/product/small-size') }}/{{ $product->image }}"
                                                     alt="{{ $product->name }}">
                                             </td>
                                             <td class="li-product-price"><span

@@ -26,7 +26,7 @@
                     <div class="product-details-left">
                         <div class="product-details-images slider-navigation-1">
                             <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}.jpg"
+                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}"
                                     alt="{{ $product->name }}">
                             </div>
                             <div class="lg-image">
@@ -226,7 +226,7 @@
                                             <div class="modal-inner-area row">
                                                 <div class="col-lg-6">
                                                     <div class="li-review-product">
-                                                        <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}.jpg"
+                                                        <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}"
                                                             alt="{{ $product->name }}">
                                                         <div class="li-review-product-desc">
                                                             <p class="li-product-name">Today is a good day Framed
@@ -330,7 +330,7 @@
                                     <div class="single-product-wrap">
                                         <div class="product-image">
                                             <a href="{{ route('product.details', ['slug' => $rproduct->slug]) }}">
-                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $rproduct->image }}.jpg"
+                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $rproduct->image }}"
                                                     alt="{{ $rproduct->name }}">
                                             </a>
                                         </div>
@@ -395,7 +395,7 @@
                                     <div class="single-product-wrap">
                                         <div class="product-image">
                                             <a href="{{ route('product.details', ['slug' => $nproduct->slug]) }}">
-                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $nproduct->image }}.jpg"
+                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $nproduct->image }}"
                                                     alt="{{ $nproduct->name }}">
                                             </a>
                                             <span class="sticker">New</span>
