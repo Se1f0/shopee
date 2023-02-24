@@ -206,7 +206,7 @@
                                                 </li>
                                             @else
                                                 <li style="display: none"></li>
-                                                @endif
+                                            @endif
                                                 <!-- Begin Header Bottom Menu Information Area -->
                                                 <li class="hb-info f-right p-0 d-sm-none d-lg-block">
                                                     <span>6688 London, Greater London BAS 23JK, UK</span>
