@@ -19,9 +19,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    @if (Session::has('success_message'))
+                    @if (Session::has('message'))
                         <div class="alert alert-success">
-                            <strong>Success | {{ Session::get('success_message') }}</strong>
+                            <strong>Success | {{ Session::get('message') }}</strong>
                         </div>
                     @endif
                     <form action="#">
@@ -58,6 +58,10 @@
                                                     onclick="location.href='{{ route('admin.category.edit', ['category_id' => $category->id]) }}'">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                                 </button>
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="deleteConfirmation({{ $category->id }})">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -72,3 +76,34 @@
     </div>
     <!--Shopping Cart Area End-->
 </div>
+
+<div class="modal" id="deleteConfirmation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body pb-30 pt-30">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h4 class="pb-3">Do you want to delete this Category ?</h4>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            data-bs-target="#deleteConfirmation">Cancel</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteCategory()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+    <script>
+        function deleteConfirmation(id) {
+            @this.set('category_id', id);
+            $('#deleteConfirmation').modal('show');
+        }
+
+        function deleteCategory() {
+            @this.call('deleteCategory');
+            $('#deleteConfirmation').modal('hide');
+        }
+    </script>
+@endpush

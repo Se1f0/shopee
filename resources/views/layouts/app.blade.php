@@ -667,6 +667,7 @@
             <script src="https://kit.fontawesome.com/87d8587084.js" crossorigin="anonymosus"></script>
 
             @livewireScripts
+            @stack('scripts')
         </body>
 
         <!-- index-231:38-->
