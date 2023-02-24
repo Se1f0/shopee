@@ -88,7 +88,7 @@
                                                         <div class="product-image">
                                                             <a
                                                                 href="{{ route('product.details', ['slug' => $product->slug]) }}">
-                                                                <img src="{{ asset('assets/images/product/large-size/product') }}-{{ $product->id }}.jpg"
+                                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}.jpg"
                                                                     alt="{{ $product->name }}">
                                                             </a>
                                                             <span class="sticker">New</span>
@@ -164,7 +164,7 @@
                                                         <div class="product-image">
                                                             <a
                                                                 href="{{ route('product.details', ['slug' => $product->slug]) }}">
-                                                                <img src="{{ asset('assets/images/product/large-size/product') }}-{{ $product->id }}.jpg"
+                                                                <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}.jpg"
                                                                     alt="{{ $product->name }}">
                                                             </a>
                                                             <span class="sticker">New</span>

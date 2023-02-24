@@ -43,7 +43,7 @@
                                                             class="fa fa-trash" aria-hidden="true"></i></a>
                                                 </td>
                                                 <td class="li-product-thumbnail"><a href="#"><img
-                                                            src="{{ asset('assets/images/product/small-size/product') }}-{{ $item->model->id }}.jpg"
+                                                            src="{{ asset('assets/images/product/small-size') }}/{{ $item->model->image }}.jpg"
                                                             alt="{{ $item->model->name }}"></a></td>
                                                 <td class="li-product-name"><a
                                                         href="#">{{ $item->model->name }}</a>

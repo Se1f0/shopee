@@ -44,7 +44,7 @@
                                                 </td>
                                                 <td class="li-product-thumbnail"><a
                                                         href="{{ route('product.details', ['slug' => $item->model->slug]) }}"><img
-                                                            src="{{ asset('assets/images/product/small-size/product') }}-{{ $item->model->id }}.jpg"
+                                                            src="{{ asset('assets/images/product/small-size') }}/{{ $item->model->image }}.jpg"
                                                             alt="{{ $item->model->name }}"></a>
                                                 </td>
                                                 <td class="li-product-name"><a
