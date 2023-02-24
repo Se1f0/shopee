@@ -31,6 +31,7 @@
                                     <tr>
 
                                         <th class="li-product-thumbnail">#</th>
+                                        <th class="li-product-thumbnail">ID</th>
                                         <th class="cart-product-name">Name</th>
                                         <th class="li-product-price">Slug</th>
                                         <th class="li-product-quantity">Action</th>
@@ -44,13 +45,19 @@
                                         <tr>
                                             <td class="li-product-price"><span class="amount">{{ ++$i }}</span>
                                             </td>
+                                            <td class="li-product-price"><span class="amount">{{ $category->id }}</span>
+                                            </td>
                                             <td class="li-product-price"><span
                                                     class="amount">{{ $category->name }}</span>
                                             </td>
                                             <td class="li-product-price"><span
                                                     class="amount">{{ $category->slug }}</span>
                                             </td>
-                                            <td class="li-product-price"><span class="amount"></span>
+                                            <td class="li-product-price">
+                                                <button type="button" class="btn btn-warning"
+                                                    onclick="location.href='{{ route('admin.category.edit', ['category_id' => $category->id]) }}'">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
