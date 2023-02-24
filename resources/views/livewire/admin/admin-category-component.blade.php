@@ -34,9 +34,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $i = ($categories->currentPage() - 1) * $categories->perPage();
+                                    @endphp
                                     @foreach ($categories as $category)
                                         <tr>
-                                            <td class="li-product-price"><span class="amount">{{ $category->id }}</span>
+                                            <td class="li-product-price"><span class="amount">{{ ++$i }}</span>
                                             </td>
                                             <td class="li-product-price"><span
                                                     class="amount">{{ $category->name }}</span>
