@@ -52,7 +52,7 @@
 </x-guest-layout> --}}
 
 <x-app-layout>
-    <div class="breadcrumb-area">
+    <div class="breadcrumb-area" style="margin-top: -20px">
         <div class="container">
             <div class="breadcrumb-content">
                 <ul>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="page-section mb-60">
+    <div class="page-section mb-60" style="margin-top: 20px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
@@ -73,19 +73,23 @@
                             <div class="row">
                                 <div class="col-md-12 col-12 mb-20">
                                     <label>Name</label>
-                                    <input class="mb-0" type="text"  name="name" placeholder="Name" :value="old('name')" required autofocus autocomplete="name">
+                                    <input class="mb-0" type="text" name="name" placeholder="Name"
+                                        :value="old('name')" required autofocus autocomplete="name">
                                 </div>
                                 <div class="col-md-12 mb-20">
                                     <label>Email Address*</label>
-                                    <input class="mb-0" type="email" name="email" placeholder="Email Address" :value="old('email')" required>
+                                    <input class="mb-0" type="email" name="email" placeholder="Email Address"
+                                        :value="old('email')" required>
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <label>Password</label>
-                                    <input class="mb-0" type="password"  name="password" placeholder="Password" required autocomplete="new-password">
+                                    <input class="mb-0" type="password" name="password" placeholder="Password"
+                                        required autocomplete="new-password">
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <label>Confirm Password</label>
-                                    <input class="mb-0" type="password"  name="password_confirmation" placeholder="Confirm Password" required>
+                                    <input class="mb-0" type="password" name="password_confirmation"
+                                        placeholder="Confirm Password" required>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
