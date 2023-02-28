@@ -13,9 +13,16 @@
     </div>
     <!-- Li's Breadcrumb Area End Here -->
     <div class="page-section mb-60" style="margin-top: 20px">
-        <button type="button" class="btn btn-success" style="margin-bottom: 5px; margin-left: 1110px"
-            onclick="location.href='{{ route('admin.categories') }}'">All Products</button>
+        {{-- <button type="button" class="btn btn-success" style="margin-bottom: 5px; margin-left: 1110px"
+            onclick="location.href='{{ route('admin.categories') }}'">All Products</button> --}}
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                    <button type="button" class="btn btn-success float-right mb-10"
+                        onclick="location.href='{{ route('admin.products') }}'">All Products
+                    </button>
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
                     @if (Session::has('message'))

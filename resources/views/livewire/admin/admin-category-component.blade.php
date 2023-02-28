@@ -13,10 +13,17 @@
     <!-- Li's Breadcrumb Area End Here -->
     <!--Shopping Cart Area Strat-->
     <div class="Shopping-cart-area pt-60 pb-60">
-        <button type="button" class="btn btn-success" style="margin-bottom: 5px; margin-left: 1375px"
+        {{-- <button type="button" class="btn btn-success" style="margin-bottom: 5px; margin-left: 1375px"
             onclick="location.href='{{ route('admin.category.add') }}'">Add New
-            Category</button>
+            Category</button> --}}
         <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-success float-right mb-10"
+                        onclick="location.href='{{ route('admin.category.add') }}'">Add New Category
+                    </button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     @if (Session::has('message'))
