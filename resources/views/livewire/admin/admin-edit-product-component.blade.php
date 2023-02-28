@@ -89,8 +89,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-20">
-                                    <label for="stock_status" wire:model="stock_status">Stock status</label>
-                                    <select class="form-control" name="stock_status">
+                                    <label for="stock_status">Stock status</label>
+                                    <select class="form-control" name="stock_status" wire:model="stock_status">
                                         <option value="instock">In stock</option>
                                         <option value="outofstock">Out of stock</option>
                                     </select>
@@ -99,8 +99,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-20">
-                                    <label for="featured" wire:model="featured">Featured</label>
-                                    <select class="form-control" name="featured">
+                                    <label for="featured">Featured</label>
+                                    <select class="form-control" name="featured" wire:model="featured">
                                         <option value="0">Yes</option>
                                         <option value="1">No</option>
                                     </select>

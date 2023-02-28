@@ -57,7 +57,7 @@
                                             <td class="li-product-price"><span class="amount">{{ $slide->id }}</span>
                                             </td>
                                             <td class="li-product-thumbnail"><img
-                                                    src="{{ asset('assets/slider') }}/{{ $slide->image }}"
+                                                    src="{{ asset('assets/images/slider') }}/{{ $slide->image }}"
                                                     alt="{{ $slide->id }}" width="80">
                                             </td>
                                             <td class="li-product-price"><span
@@ -75,14 +75,14 @@
                                                     class="amount">{{ $slide->status == 1 ? 'Active' : 'Inactive' }}</span>
                                             </td>
                                             <td class="li-product-price">
-                                                <button type="button" class="btn btn-warning mb-10"
+                                                <button type="button" class="btn btn-warning"
                                                     onclick="location.href='{{ route('admin.home.slider.edit', ['slide_id' => $slide->id]) }}'">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                                                 </button>
-                                                {{-- <button type="button" class="btn btn-danger"
+                                                <button type="button" class="btn btn-danger"
                                                     onclick="deleteConfirmation({{ $slide->id }})">
                                                     <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                                </button> --}}
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -98,16 +98,16 @@
     <!--Shopping Cart Area End-->
 </div>
 
-{{-- <div class="modal" id="deleteConfirmation">
+<div class="modal" id="deleteConfirmation">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body pb-30 pt-30">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h4 class="pb-3">Do you want to delete this Product ?</h4>
+                        <h4 class="pb-3">Do you want to delete this Slide ?</h4>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             data-bs-target="#deleteConfirmation">Cancel</button>
-                        <button type="button" class="btn btn-danger" onclick="deleteProduct()">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteSlide()">Delete</button>
                     </div>
                 </div>
             </div>
@@ -118,13 +118,13 @@
 @push('scripts')
     <script>
         function deleteConfirmation(id) {
-            @this.set('product_id', id);
+            @this.set('slide_id', id);
             $('#deleteConfirmation').modal('show');
         }
 
-        function deleteProduct() {
-            @this.call('deleteProduct');
+        function deleteSlide() {
+            @this.call('deleteSlide');
             $('#deleteConfirmation').modal('hide');
         }
     </script>
-@endpush --}}
+@endpush
