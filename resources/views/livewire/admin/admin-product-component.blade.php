@@ -78,10 +78,10 @@
                                                     class="amount">{{ $product->created_at }}</span>
                                             </td>
                                             <td class="li-product-price">
-                                                {{-- <button type="button" class="btn btn-warning"
-                                                    onclick="location.href='{{ route('admin.category.edit', ['category_id' => $category->id]) }}'">
+                                                <button type="button" class="btn btn-warning mb-10"
+                                                    onclick="location.href='{{ route('admin.product.edit', ['product_id' => $product->id]) }}'">
                                                     <i class="fa fa-pencil" aria-hidden="true"></i> Edit
-                                                </button> --}}
+                                                </button>
                                                 <button type="button" class="btn btn-danger"
                                                     onclick="deleteConfirmation({{ $product->id }})">
                                                     <i class="fa fa-trash" aria-hidden="true"></i> Delete
