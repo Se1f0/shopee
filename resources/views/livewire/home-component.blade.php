@@ -140,21 +140,24 @@
                     <div class="slider-area pt-sm-30 pt-xs-30">
                         <div class="slider-active owl-carousel">
                             <!-- Begin Single Slide Area -->
-                            <div class="single-slide align-center-left animation-style-02 bg"
-                                style="background-image: url({{ asset('assets/images/slider/4.jpg') }})">
-                                <div class="slider-progress"></div>
-                                <div class="slider-content">
-                                    <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                    <h2>Chamcham Galaxy S9 | S9+</h2>
-                                    <h3>Starting at <span>$589.00</span></h3>
-                                    <div class="default-btn slide-btn">
-                                        <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
+                            @foreach ($slides as $slide)
+                                <div class="single-slide align-center-left animation-style-02 bg"
+                                    style="background-image: url({{ asset('assets/images/slider') }}/{{ $slide->image }})">
+                                    <div class="slider-progress"></div>
+                                    <div class="slider-content">
+                                        <h5>{{ $slide->top_title }}</h5>
+                                        <h2>{{ $slide->title }}</h2>
+                                        <h3>{{ $slide->sub_title }}</h3>
+                                        <div class="default-btn slide-btn">
+                                            <a class="links" href="{{ $slide->link }}">Shopping Now</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
+
                             <!-- Single Slide Area End Here -->
                             <!-- Begin Single Slide Area -->
-                            <div class="single-slide align-center-left animation-style-01 bg-5">
+                            {{-- <div class="single-slide align-center-left animation-style-01 bg-5">
                                 <div class="slider-progress"></div>
                                 <div class="slider-content">
                                     <h5>Sale Offer <span>Black Friday</span> This Week</h5>
@@ -164,10 +167,10 @@
                                         <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Single Slide Area End Here -->
                             <!-- Begin Single Slide Area -->
-                            <div class="single-slide align-center-left animation-style-02 bg-6">
+                            {{-- <div class="single-slide align-center-left animation-style-02 bg-6">
                                 <div class="slider-progress"></div>
                                 <div class="slider-content">
                                     <h5>Sale Offer <span>-10% Off</span> This Week</h5>
@@ -177,7 +180,7 @@
                                         <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Single Slide Area End Here -->
                         </div>
                     </div>
