@@ -450,6 +450,13 @@ textarea:focus {
 /*  1.8 Background Variation Set
 /*----------------------------------------*/
 /*Home One | Slider Background Image*/
+.bg {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	min-height: 475px;
+	width: 100%;
+}
 .bg-1, .bg-2, .bg-3 {
 	background-image: url(images/slider/1.jpg);
 	background-repeat: no-repeat;

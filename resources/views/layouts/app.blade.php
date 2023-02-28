@@ -183,6 +183,8 @@
                                                             <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                                             <li><a href="{{ route('admin.products') }}">Products</a></li>
                                                             <li><a href="{{ route('admin.categories') }}">Categories</a></li>
+                                                            <li><a href="{{ route('admin.home.slider') }}">Home Slider</a>
+                                                            </li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
                                                                     @csrf
@@ -206,7 +208,7 @@
                                                 </li>
                                             @else
                                                 <li style="display: none"></li>
-                                            @endif
+                                                @endif
                                                 <!-- Begin Header Bottom Menu Information Area -->
                                                 <li class="hb-info f-right p-0 d-sm-none d-lg-block">
                                                     <span>6688 London, Greater London BAS 23JK, UK</span>
