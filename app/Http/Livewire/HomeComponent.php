@@ -41,6 +41,7 @@ class HomeComponent extends Component
     {
         $slides = HomeSlider::where('status', 1)->get();
         $lproducts = Product::orderBy('created_at', 'desc')->get()->take(8);
-        return view('livewire.home-component', ['slides' => $slides, 'lproducts' => $lproducts]);
+        $fproducts = Product::where('featured', 1)->inRandomOrder()->get()->take(8);
+        return view('livewire.home-component', ['slides' => $slides, 'lproducts' => $lproducts, 'fproducts' => $fproducts]);
     }
 }
