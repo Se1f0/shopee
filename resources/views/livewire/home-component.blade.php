@@ -118,8 +118,12 @@
                                         </li>
                                     </ul>
                                 </li> --}}
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Headphone</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a
+                                            href="{{ route('product.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
+                                {{-- <li><a href="#">Headphone</a></li>
                                 <li><a href="#">Smartwatch</a></li>
                                 <li><a href="#">Out Door Room</a></li>
                                 <li><a href="#">Chamcham</a></li>
@@ -128,7 +132,7 @@
                                 <li class="rx-parent">
                                     <a class="rx-default">More Categories</a>
                                     <a class="rx-show">Less Categories</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
