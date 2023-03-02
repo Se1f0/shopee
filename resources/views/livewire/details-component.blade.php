@@ -96,9 +96,21 @@
                                     <li class="review-item"><a href="#">Write Review</a></li>
                                 </ul>
                             </div>
-                            <div class="price-box pt-20">
-                                <span class="new-price new-price-2">${{ $product->regular_price }}</span>
-                            </div>
+                            @if ($product->sale_price > 0)
+                                <div class="price-box pt-20">
+                                    <span class="old-price old-price-2"><s>${{ $product->regular_price }}</s></span>
+                                    <br>
+                                    <span class="new-price new-price-2">${{ $product->sale_price }}</span>
+                                </div>
+                                <div class="countersection">
+                                    <div class="li-countdown product-sale-countdown"></div>
+                                </div>
+                                <br><br>
+                            @else
+                                <div class="price-box pt-20">
+                                    <span class="new-price new-price-2">${{ $product->regular_price }}</span>
+                                </div>
+                            @endif
                             <div class="product-desc">
                                 <p>
                                     <span>{{ $product->short_desc }}</span>
