@@ -345,6 +345,9 @@
                                                 <img src="{{ asset('assets/images/product/large-size') }}/{{ $rproduct->image }}"
                                                     alt="{{ $rproduct->name }}">
                                             </a>
+                                            @if ($rproduct->sale_price > 0)
+                                                <span class="sticker" style="background-color: red">Sale</span>
+                                            @endif
                                         </div>
                                         <div class="product_desc">
                                             <div class="product_desc_info">
@@ -365,9 +368,18 @@
                                                 <h4><a class="product_name"
                                                         href="{{ route('product.details', ['slug' => $rproduct->slug]) }}">{{ $rproduct->name }}</a>
                                                 </h4>
-                                                <div class="price-box">
-                                                    <span class="new-price">${{ $rproduct->regular_price }}</span>
-                                                </div>
+                                                @if ($rproduct->sale_price > 0)
+                                                    <div class="price-box">
+                                                        <span
+                                                            class="new-price new-price-2">${{ $rproduct->sale_price }}</span>
+                                                        <span class="old-price">${{ $rproduct->regular_price }}</span>
+                                                        {{-- <span class="discount-percentage">-7%</span> --}}
+                                                    </div>
+                                                @else
+                                                    <div class="price-box">
+                                                        <span class="new-price">${{ $rproduct->regular_price }}</span>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
@@ -431,9 +443,18 @@
                                                 <h4><a class="product_name"
                                                         href="{{ route('product.details', ['slug' => $nproduct->slug]) }}">{{ $nproduct->name }}</a>
                                                 </h4>
-                                                <div class="price-box">
-                                                    <span class="new-price">${{ $nproduct->regular_price }}</span>
-                                                </div>
+                                                @if ($nproduct->sale_price > 0)
+                                                    <div class="price-box">
+                                                        <span
+                                                            class="new-price new-price-2">${{ $nproduct->sale_price }}</span>
+                                                        <span class="old-price">${{ $nproduct->regular_price }}</span>
+                                                        {{-- <span class="discount-percentage">-7%</span> --}}
+                                                    </div>
+                                                @else
+                                                    <div class="price-box">
+                                                        <span class="new-price">${{ $nproduct->regular_price }}</span>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
