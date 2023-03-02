@@ -230,6 +230,96 @@
         </div>
     </div>
     <!-- Li's Static Banner Area End Here -->
+    @php
+        $witems = Cart::instance('wishlist')
+            ->content()
+            ->pluck('id');
+    @endphp
+    @if ($sproducts->count() > 0)
+        <!-- Begin Li's Special Product Area -->
+        <section class="product-area li-laptop-product Special-product pt-60 pb-45">
+            <div class="container">
+                <div class="row">
+                    <!-- Begin Li's Section Area -->
+                    <div class="col-lg-12">
+                        <div class="li-section-title">
+                            <h2>
+                                <span>Hot Deals Products</span>
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="special-product-active owl-carousel">
+                                @foreach ($sproducts as $sproduct)
+                                    <div class="col-lg-12">
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="product-image">
+                                                <a href="{{ route('product.details', ['slug' => $sproduct->slug]) }}">
+                                                    <img src="{{ asset('assets/images/product/large-size') }}/{{ $sproduct->image }}"
+                                                        alt="{{ $sproduct->name }}">
+                                                </a>
+                                                <span class="sticker">Sale</span>
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        <h5 class="manufacturer">
+                                                            <a href="shop-left-sidebar.html">Graphic Corner</a>
+                                                        </h5>
+                                                        <div class="rating-box">
+                                                            <ul class="rating">
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li><i class="fa fa-star-o"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <h4><a class="product_name"
+                                                            href="single-product.html">{{ $sproduct->name }}</a>
+                                                    </h4>
+                                                    <div class="price-box">
+                                                        <span
+                                                            class="new-price new-price-2">${{ $sproduct->sale_price }}</span>
+                                                        <span class="old-price">${{ $sproduct->regular_price }}</span>
+                                                        {{-- <span class="discount-percentage">-7%</span> --}}
+                                                    </div>
+                                                    <div class="countersection">
+                                                        <div class="li-countdown"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="add-actions">
+                                                    <ul class="add-actions-link">
+                                                        <li class="add-cart active"><a href="#"
+                                                                wire:click.prevent="store({{ $sproduct->id }} , '{{ $sproduct->name }}' , {{ $sproduct->regular_price }})">Add
+                                                                to cart</a>
+                                                        </li>
+                                                        @if ($witems->contains($sproduct->id))
+                                                            <li><a class="links-details" href="#"
+                                                                    wire:click.prevent="removeFromWishlist({{ $sproduct->id }})"><i
+                                                                        class="fa fa-heart"></i></a></li>
+                                                        @else
+                                                            <li><a class="links-details" href="#"
+                                                                    wire:click.prevent="addToWishlist({{ $sproduct->id }},'{{ $sproduct->name }}',{{ $sproduct->regular_price }})"><i
+                                                                        class="fa fa-heart-o"></i></a></li>
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single-product-wrap end -->
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Li's Section Area End Here -->
+                </div>
+            </div>
+        </section>
+        <!-- Li's Special Product Area End Here -->
+    @endif
 
     <!-- Begin Li's Trending Product | Home V2 Area -->
     <section class="product-area li-laptop-product Special-product pt-60 pb-45">
@@ -247,11 +337,6 @@
                         <div id="home1" class="tab-pane show fade in active">
                             <div class="row">
                                 <div class="product-active owl-carousel">
-                                    @php
-                                        $witems = Cart::instance('wishlist')
-                                            ->content()
-                                            ->pluck('id');
-                                    @endphp
                                     @foreach ($lproducts as $lproduct)
                                         <div class="col-lg-12">
                                             <!-- single-product-wrap start -->
@@ -415,93 +500,6 @@
         </div>
     </section>
     <!-- Li's Trending Product | Home V2 Area End Here -->
-
-    @if ($sproducts->count() > 0)
-        <!-- Begin Li's Special Product Area -->
-        <section class="product-area li-laptop-product Special-product pt-60 pb-45">
-            <div class="container">
-                <div class="row">
-                    <!-- Begin Li's Section Area -->
-                    <div class="col-lg-12">
-                        <div class="li-section-title">
-                            <h2>
-                                <span>Hot Deals Products</span>
-                            </h2>
-                        </div>
-                        <div class="row">
-                            <div class="special-product-active owl-carousel">
-                                @foreach ($sproducts as $sproduct)
-                                    <div class="col-lg-12">
-                                        <!-- single-product-wrap start -->
-                                        <div class="single-product-wrap">
-                                            <div class="product-image">
-                                                <a href="{{ route('product.details', ['slug' => $sproduct->slug]) }}">
-                                                    <img src="{{ asset('assets/images/product/large-size') }}/{{ $sproduct->image }}"
-                                                        alt="{{ $sproduct->name }}">
-                                                </a>
-                                                <span class="sticker">Sale</span>
-                                            </div>
-                                            <div class="product_desc">
-                                                <div class="product_desc_info">
-                                                    <div class="product-review">
-                                                        <h5 class="manufacturer">
-                                                            <a href="shop-left-sidebar.html">Graphic Corner</a>
-                                                        </h5>
-                                                        <div class="rating-box">
-                                                            <ul class="rating">
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                                <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <h4><a class="product_name"
-                                                            href="single-product.html">{{ $sproduct->name }}</a>
-                                                    </h4>
-                                                    <div class="price-box">
-                                                        <span class="old-price">${{ $sproduct->regular_price }}</span>
-                                                    </div>
-                                                    <div class="price-box">
-                                                        <span class="new-price"
-                                                            style="color: red">${{ $sproduct->sale_price }}</span>
-                                                    </div>
-                                                    <div class="countersection">
-                                                        <div class="li-countdown"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="add-actions">
-                                                    <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#"
-                                                                wire:click.prevent="store({{ $sproduct->id }} , '{{ $sproduct->name }}' , {{ $sproduct->regular_price }})">Add
-                                                                to cart</a>
-                                                        </li>
-                                                        @if ($witems->contains($sproduct->id))
-                                                            <li><a class="links-details" href="#"
-                                                                    wire:click.prevent="removeFromWishlist({{ $sproduct->id }})"><i
-                                                                        class="fa fa-heart"></i></a></li>
-                                                        @else
-                                                            <li><a class="links-details" href="#"
-                                                                    wire:click.prevent="addToWishlist({{ $sproduct->id }},'{{ $sproduct->name }}',{{ $sproduct->regular_price }})"><i
-                                                                        class="fa fa-heart-o"></i></a></li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- single-product-wrap end -->
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Li's Section Area End Here -->
-                </div>
-            </div>
-        </section>
-        <!-- Li's Special Product Area End Here -->
-    @endif
 
     <!-- Begin Li's Laptops Product | Home V2 Area -->
     <section class="product-area li-laptop-product li-laptop-product-2 pb-45">
