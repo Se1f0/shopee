@@ -43,6 +43,7 @@
                                         <th class="cart-product-name">Name</th>
                                         <th class="li-product-price">Stock</th>
                                         <th class="li-product-price">Price</th>
+                                        <th class="li-product-price">Sale Price</th>
                                         <th class="li-product-price">Category</th>
                                         <th class="li-product-price">Date</th>
                                         <th class="li-product-quantity">Action</th>
@@ -69,7 +70,10 @@
                                                     class="amount">{{ $product->stock_status }}</span>
                                             </td>
                                             <td class="li-product-price"><span
-                                                    class="amount">{{ $product->regular_price }}</span>
+                                                    class="amount">${{ $product->regular_price }}</span>
+                                            </td>
+                                            <td class="li-product-price"><span
+                                                    class="amount">${{ $product->sale_price }}</span>
                                             </td>
                                             <td class="li-product-price"><span
                                                     class="amount">{{ $product->category->name }}</span>
