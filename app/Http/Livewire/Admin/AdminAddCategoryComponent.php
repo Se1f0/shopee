@@ -20,7 +20,7 @@ class AdminAddCategoryComponent extends Component
     {
         $this->validateOnly($fields, [
             'name' => 'required',
-            'slug' => 'required'
+            'slug' => 'required|unique:categories'
         ]);
     }
 
@@ -28,7 +28,7 @@ class AdminAddCategoryComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required'
+            'slug' => 'required|unique:categories'
         ]);
 
         $category = new Category();
