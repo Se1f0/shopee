@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sale;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
@@ -78,12 +79,15 @@ class CategoryComponent extends Component
 
         $categories = Category::orderBy('name', 'ASC')->get();
 
+        $sale = Sale::find(1);
+
         return view('livewire.category-component', [
             'products' => $products,
             'count' => $product_count,
             'pages' => $pages,
             'categories' => $categories,
-            'category_name' => $category_name
+            'category_name' => $category_name,
+            'sale' => $sale,
         ]);
     }
 }
