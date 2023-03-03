@@ -149,7 +149,7 @@ Note: main.js, All Default Scripting Languages For This Theme Included In This F
 /* 08. Countdown
 /*----------------------------------------*/
    $(".li-countdown")
-     .countdown("2019/12/01", function(event) {
+     .countdown($(".li-countdown").attr("data-expire"), function(event) {
        $(this).html(
          event.strftime('<div class="count">%D <span>Days:</span></div> <div class="count">%H <span>Hours:</span></div> <div class="count">%M <span>Mins:</span></div><div class="count"> %S <span>Secs</span></div>')
        );

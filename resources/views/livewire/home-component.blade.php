@@ -258,7 +258,7 @@
                                                     <img src="{{ asset('assets/images/product/large-size') }}/{{ $sproduct->image }}"
                                                         alt="{{ $sproduct->name }}">
                                                 </a>
-                                                <span class="sticker">Sale</span>
+                                                <span class="sticker" style="background-color: red ">Sale</span>
                                             </div>
                                             <div class="product_desc">
                                                 <div class="product_desc_info">
@@ -286,7 +286,9 @@
                                                         {{-- <span class="discount-percentage">-7%</span> --}}
                                                     </div>
                                                     <div class="countersection">
-                                                        <div class="li-countdown"></div>
+                                                        <div class="li-countdown"
+                                                            data-expire="{{ Carbon\Carbon::parse($sale->sales_date)->format('Y/m/d H:m:s') }}">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="add-actions">

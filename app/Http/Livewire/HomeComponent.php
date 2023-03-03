@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\HomeSlider;
 use App\Models\Product;
+use App\Models\Sale;
 use Livewire\Component;
 use Cart;
 
@@ -45,6 +46,7 @@ class HomeComponent extends Component
         $lproducts = Product::orderBy('created_at', 'desc')->get()->take(8);
         $fproducts = Product::where('featured', 1)->inRandomOrder()->get()->take(8);
         $sproducts = Product::where('sale_price', '>', 0)->inRandomOrder()->get()->take(8);
-        return view('livewire.home-component', ['slides' => $slides, 'lproducts' => $lproducts, 'fproducts' => $fproducts, 'categories' => $categories, 'sproducts' => $sproducts]);
+        $sale = Sale::find(1);
+        return view('livewire.home-component', ['slides' => $slides, 'lproducts' => $lproducts, 'fproducts' => $fproducts, 'categories' => $categories, 'sproducts' => $sproducts, 'sale' => $sale]);
     }
 }
