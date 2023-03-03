@@ -96,7 +96,7 @@
                                     <li class="review-item"><a href="#">Write Review</a></li>
                                 </ul>
                             </div>
-                            @if ($product->sale_price > 0)
+                            @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
                                 <div class="price-box pt-20">
                                     <span class="old-price old-price-2"><s>${{ $product->regular_price }}</s></span>
                                     <br>
@@ -137,9 +137,15 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                        <button class="add-to-cart"
-                                            wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
-                                            to cart</button>
+                                        @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                            <button class="add-to-cart"
+                                                wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->sale_price }})">Add
+                                                to cart</button>
+                                        @else
+                                            <button class="add-to-cart"
+                                                wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                                to cart</button>
+                                        @endif
                                         @if ($witems->contains($product->id))
                                             <button class="add-to-cart"
                                                 wire:click.prevent="removeFromWishlist({{ $product->id }})"
@@ -390,12 +396,15 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#"
-                                                            wire:click.prevent="store({{ $rproduct->id }} , '{{ $rproduct->name }}' , {{ $rproduct->regular_price }})">Add
-                                                            to cart</a></li>
-                                                    <li><a href="#" title="quick view" class="quick-view-btn"
-                                                            data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                                class="fa fa-eye"></i></a></li>
+                                                    @if ($rproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                        <li class="add-cart active"><a href="#"
+                                                                wire:click.prevent="store({{ $rproduct->id }} , '{{ $rproduct->name }}' , {{ $rproduct->sale_price }})">Add
+                                                                to cart</a></li>
+                                                    @else
+                                                        <li class="add-cart active"><a href="#"
+                                                                wire:click.prevent="store({{ $rproduct->id }} , '{{ $rproduct->name }}' , {{ $rproduct->regular_price }})">Add
+                                                                to cart</a></li>
+                                                    @endif
                                                     <li><a class="links-details" href="wishlist.html"><i
                                                                 class="fa fa-heart-o"></i></a></li>
                                                 </ul>
@@ -470,12 +479,15 @@
                                             </div>
                                             <div class="add-actions">
                                                 <ul class="add-actions-link">
-                                                    <li class="add-cart active"><a href="#"
-                                                            wire:click.prevent="store({{ $nproduct->id }} , '{{ $nproduct->name }}' , {{ $nproduct->regular_price }})">Add
-                                                            to cart</a></li>
-                                                    <li><a href="#" title="quick view" class="quick-view-btn"
-                                                            data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                                class="fa fa-eye"></i></a></li>
+                                                    @if ($nproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                        <li class="add-cart active"><a href="#"
+                                                                wire:click.prevent="store({{ $nproduct->id }} , '{{ $nproduct->name }}' , {{ $nproduct->sale_price }})">Add
+                                                                to cart</a></li>
+                                                    @else
+                                                        <li class="add-cart active"><a href="#"
+                                                                wire:click.prevent="store({{ $nproduct->id }} , '{{ $nproduct->name }}' , {{ $nproduct->regular_price }})">Add
+                                                                to cart</a></li>
+                                                    @endif
                                                     <li><a class="links-details" href="wishlist.html"><i
                                                                 class="fa fa-heart-o"></i></a></li>
                                                 </ul>

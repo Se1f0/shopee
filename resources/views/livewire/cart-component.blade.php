@@ -50,8 +50,16 @@
                                                 <td class="li-product-name"><a
                                                         href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                                                 </td>
-                                                <td class="li-product-price"><span
-                                                        class="amount">${{ $item->model->regular_price }}</span></td>
+                                                @if ($item->model->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                    <td class="li-product-price"><span
+                                                            class="amount">${{ $item->model->sale_price }}</span>
+                                                    </td>
+                                                @else
+                                                    <td class="li-product-price"><span
+                                                            class="amount">${{ $item->model->regular_price }}</span>
+                                                    </td>
+                                                @endif
+
                                                 <td class="quantity">
                                                     <label>Quantity</label>
                                                     <div class="cart-plus-minus">
