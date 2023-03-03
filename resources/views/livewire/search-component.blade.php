@@ -143,9 +143,15 @@
                                                             </div>
                                                             <div class="add-actions">
                                                                 <ul class="add-actions-link">
-                                                                    <li class="add-cart active"><a href="#"
-                                                                            wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
-                                                                            to cart</a></li>
+                                                                    @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                                        <li class="add-cart active"><a href="#"
+                                                                                wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->sale_price }})">Add
+                                                                                to cart</a></li>
+                                                                    @else
+                                                                        <li class="add-cart active"><a href="#"
+                                                                                wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                                                                to cart</a></li>
+                                                                    @endif
                                                                     {{-- <li><a href="#" title="quick view"
                                                                             class="quick-view-btn" data-toggle="modal"
                                                                             data-target="#exampleModalCenter"><i
@@ -244,10 +250,15 @@
                                                     <div class="col-lg-4">
                                                         <div class="shop-add-action mb-xs-30">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#"
-                                                                        wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
-                                                                        to cart</a>
-                                                                </li>
+                                                                @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                                    <li class="add-cart "><a href="#"
+                                                                            wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->sale_price }})">Add
+                                                                            to cart</a></li>
+                                                                @else
+                                                                    <li class="add-cart "><a href="#"
+                                                                            wire:click.prevent="store({{ $product->id }} , '{{ $product->name }}' , {{ $product->regular_price }})">Add
+                                                                            to cart</a></li>
+                                                                @endif
                                                                 @if ($witems->contains($product->id))
                                                                     <li class="wishlist"><a href="#"
                                                                             wire:click.prevent="removeFromWishlist({{ $product->id }})"><i
