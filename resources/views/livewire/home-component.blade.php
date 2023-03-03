@@ -235,7 +235,7 @@
             ->content()
             ->pluck('id');
     @endphp
-    @if ($sproducts->count() > 0)
+    @if ($sproducts->count() > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
         <!-- Begin Li's Special Product Area -->
         <section class="product-area li-laptop-product Special-product pt-60 pb-45">
             <div class="container">
@@ -372,10 +372,25 @@
                                                         <h4><a class="product_name"
                                                                 href="{{ route('product.details', ['slug' => $lproduct->slug]) }}">{{ $lproduct->name }}</a>
                                                         </h4>
-                                                        <div class="price-box">
-                                                            <span
-                                                                class="new-price">${{ $lproduct->regular_price }}</span>
-                                                        </div>
+                                                        @if ($lproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                            <div class="price-box">
+                                                                <span
+                                                                    class="new-price new-price-2">${{ $lproduct->sale_price }}</span>
+                                                                <span
+                                                                    class="old-price">${{ $lproduct->regular_price }}</span>
+                                                                {{-- <span class="discount-percentage">-7%</span> --}}
+                                                            </div>
+                                                            <div class="countersection">
+                                                                <div class="li-countdown"
+                                                                    data-expire="{{ Carbon\Carbon::parse($sale->sales_date)->format('Y/m/d H:m:s') }}">
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <div class="price-box">
+                                                                <span
+                                                                    class="new-price">${{ $lproduct->regular_price }}</span>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div class="add-actions">
                                                         <ul class="add-actions-link">
@@ -442,6 +457,10 @@
                                                         <img src="{{ asset('assets/images/product/large-size') }}/{{ $fproduct->image }}"
                                                             alt="{{ $fproduct->name }}">
                                                     </a>
+                                                    @if ($fproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                        <span class="sticker"
+                                                            style="background-color: red">Sale</span>
+                                                    @endif
                                                 </div>
                                                 <div class="product_desc">
                                                     <div class="product_desc_info">
@@ -464,10 +483,25 @@
                                                         <h4><a class="product_name"
                                                                 href="{{ route('product.details', ['slug' => $fproduct->slug]) }}">{{ $fproduct->name }}</a>
                                                         </h4>
-                                                        <div class="price-box">
-                                                            <span
-                                                                class="new-price">${{ $fproduct->regular_price }}</span>
-                                                        </div>
+                                                        @if ($fproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                            <div class="price-box">
+                                                                <span
+                                                                    class="new-price new-price-2">${{ $fproduct->sale_price }}</span>
+                                                                <span
+                                                                    class="old-price">${{ $fproduct->regular_price }}</span>
+                                                                {{-- <span class="discount-percentage">-7%</span> --}}
+                                                            </div>
+                                                            <div class="countersection">
+                                                                <div class="li-countdown"
+                                                                    data-expire="{{ Carbon\Carbon::parse($sale->sales_date)->format('Y/m/d H:m:s') }}">
+                                                                </div>
+                                                            </div>
+                                                        @else
+                                                            <div class="price-box">
+                                                                <span
+                                                                    class="new-price">${{ $fproduct->regular_price }}</span>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div class="add-actions">
                                                         <ul class="add-actions-link">
