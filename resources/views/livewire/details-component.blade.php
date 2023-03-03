@@ -115,7 +115,7 @@
                             @endif
                             <div class="product-desc">
                                 <p>
-                                    <span>{{ $product->short_desc }}</span>
+                                    <span>{!! $product->short_desc !!}</span>
                                 </p>
                             </div>
                             <div class="single-add-to-cart">
@@ -199,7 +199,7 @@
             <div class="tab-content">
                 <div id="description" class="tab-pane active show" role="tabpanel">
                     <div class="product-description">
-                        <span>{{ $product->desc }}</span>
+                        <span>{!! $product->desc !!}</span>
                     </div>
                 </div>
                 <div id="product-details" class="tab-pane" role="tabpanel">

@@ -674,8 +674,12 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
                 integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
             <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+            <script src="https://cdn.tiny.cloud/1/se92em5g2d5m8w5rktbuewnclinxail376zquiqsqi07vp5m/tinymce/6/tinymce.min.js"
+                referrerpolicy="origin"></script>
+
+
 
             @livewireScripts
             @stack('scripts')
