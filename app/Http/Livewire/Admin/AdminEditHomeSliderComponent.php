@@ -31,18 +31,6 @@ class AdminEditHomeSliderComponent extends Component
         $this->image = $slide->image;
     }
 
-    public function updated($fields)
-    {
-        $this->validateOnly($fields, [
-            'top_title' => 'required',
-            'title' => 'required',
-            'sub_title' => 'required',
-            'link' => 'required',
-            'status' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
-        ]);
-    }
-
     public function updateSlide()
     {
         $this->validate([
@@ -51,7 +39,7 @@ class AdminEditHomeSliderComponent extends Component
             'sub_title' => 'required',
             'link' => 'required',
             'status' => 'required',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'required'
         ]);
 
         $slide = HomeSlider::find($this->slide_id);
