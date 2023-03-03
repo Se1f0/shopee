@@ -42,6 +42,8 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
+    <link href="{{ asset('assets/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" id="galio-skin">
+
     @livewireStyles
 </head>
 
@@ -184,6 +186,7 @@
                                                             <li><a href="{{ route('admin.products') }}">Products</a></li>
                                                             <li><a href="{{ route('admin.categories') }}">Categories</a></li>
                                                             <li><a href="{{ route('admin.home.slider') }}">Home Slider</a>
+                                                            <li><a href="{{ route('admin.sale') }}">Sale Settings</a>
                                                             </li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
@@ -667,6 +670,12 @@
             <script src="{{ asset('assets/js/main.js') }}"></script>
 
             <script src="https://kit.fontawesome.com/87d8587084.js" crossorigin="anonymosus"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+                integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+            <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
 
             @livewireScripts
             @stack('scripts')
