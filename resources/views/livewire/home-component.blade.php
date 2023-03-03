@@ -294,7 +294,7 @@
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
                                                         <li class="add-cart active"><a href="#"
-                                                                wire:click.prevent="store({{ $sproduct->id }} , '{{ $sproduct->name }}' , {{ $sproduct->regular_price }})">Add
+                                                                wire:click.prevent="store({{ $sproduct->id }} , '{{ $sproduct->name }}' , {{ $sproduct->sale_price }})">Add
                                                                 to cart</a>
                                                         </li>
                                                         @if ($witems->contains($sproduct->id))
@@ -394,10 +394,15 @@
                                                     </div>
                                                     <div class="add-actions">
                                                         <ul class="add-actions-link">
-                                                            <li class="add-cart active"><a href="#"
-                                                                    wire:click.prevent="store({{ $lproduct->id }} , '{{ $lproduct->name }}' , {{ $lproduct->regular_price }})">Add
-                                                                    to
-                                                                    cart</a></li>
+                                                            @if ($lproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                                <li class="add-cart active"><a href="#"
+                                                                        wire:click.prevent="store({{ $lproduct->id }} , '{{ $lproduct->name }}' , {{ $lproduct->sale_price }})">Add
+                                                                        to cart</a></li>
+                                                            @else
+                                                                <li class="add-cart active"><a href="#"
+                                                                        wire:click.prevent="store({{ $lproduct->id }} , '{{ $lproduct->name }}' , {{ $lproduct->regular_price }})">Add
+                                                                        to cart</a></li>
+                                                            @endif
                                                             @if ($witems->contains($lproduct->id))
                                                                 <li><a class="links-details" href="#"
                                                                         wire:click.prevent="removeFromWishlist({{ $lproduct->id }})"><i
@@ -505,10 +510,15 @@
                                                     </div>
                                                     <div class="add-actions">
                                                         <ul class="add-actions-link">
-                                                            <li class="add-cart active"><a href="#"
-                                                                    wire:click.prevent="store({{ $fproduct->id }} , '{{ $fproduct->name }}' , {{ $fproduct->regular_price }})">Add
-                                                                    to
-                                                                    cart</a></li>
+                                                            @if ($fproduct->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
+                                                                <li class="add-cart active"><a href="#"
+                                                                        wire:click.prevent="store({{ $fproduct->id }} , '{{ $fproduct->name }}' , {{ $fproduct->sale_price }})">Add
+                                                                        to cart</a></li>
+                                                            @else
+                                                                <li class="add-cart active"><a href="#"
+                                                                        wire:click.prevent="store({{ $fproduct->id }} , '{{ $fproduct->name }}' , {{ $fproduct->regular_price }})">Add
+                                                                        to cart</a></li>
+                                                            @endif
                                                             @if ($witems->contains($fproduct->id))
                                                                 <li><a class="links-details" href="#"
                                                                         wire:click.prevent="removeFromWishlist({{ $fproduct->id }})"><i
