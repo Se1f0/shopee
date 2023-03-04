@@ -69,6 +69,14 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                <div class="col-md-12 mb-20">
+                                    <label>Expiry Date</label>
+                                    <input class="mb-0" type="text" id="expiry-date" name="expiry_date"
+                                        placeholder="YYYY-MM-DD" required wire:model="expiry_date">
+                                    @error('expiry_date')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                                 <div class="col-md-8">
                                     <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
                                         <button class="register-button mt-0" type="submit">Submit</button>
@@ -82,3 +90,16 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function() {
+            $('#expiry-date').datetimepicker({
+                format: 'Y-MM-DD',
+            }).on('dp.change', function(e) {
+                var data = $('#expiry-date').val();
+                @this.set('expiry_date', data)
+            });
+        })
+    </script>
+@endpush

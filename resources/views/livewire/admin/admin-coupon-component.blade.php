@@ -44,6 +44,7 @@
                                         <th class="li-product-price">Value</th>
                                         <th class="li-product-price">Cart Value</th>
                                         <th class="li-product-price">Created At</th>
+                                        <th class="li-product-price">Expired In</th>
                                         <th class="li-product-quantity">Action</th>
                                     </tr>
                                 </thead>
@@ -72,10 +73,13 @@
                                             @endif
 
                                             <td class="li-product-price"><span
-                                                    class="amount">{{ $coupon->cart_value }}</span>
+                                                    class="amount">${{ $coupon->cart_value }}</span>
                                             </td>
                                             <td class="li-product-price"><span
                                                     class="amount">{{ $coupon->created_at }}</span>
+                                            </td>
+                                            <td class="li-product-price"><span
+                                                    class="amount">{{ $coupon->expiry_date }}</span>
                                             </td>
                                             <td class="li-product-price">
                                                 <button type="button" class="btn btn-warning"
