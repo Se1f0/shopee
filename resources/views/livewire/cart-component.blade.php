@@ -142,7 +142,7 @@
                                             @endif
 
                                         </ul>
-                                        <a href="#">Proceed to checkout</a>
+                                        <a href="#" wire:click.prevent="checkout">Proceed to checkout</a>
                                     </div>
                                 </div>
                             </div>
