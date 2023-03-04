@@ -83,32 +83,64 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="coupon-all">
-                                        <div class="coupon">
-                                            <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                                placeholder="Coupon code" type="text">
-                                            <input class="button" name="apply_coupon" value="Apply coupon"
-                                                type="submit">
-                                        </div>
-                                        <div class="coupon2">
-                                            <input class="button" name="update_cart" value="Update cart" type="submit">
+                            @if (!Session::has('coupon'))
+                                <div class="row">
+                                    <div class="col-md-12 mt-10">
+                                        <div class="checkout-form-list create-acc">
+                                            <input id="cbox" type="checkbox" wire:model="haveCouponCode">
+                                            <label>I have a coupon</label>
                                         </div>
                                     </div>
+                                    @if ($haveCouponCode == 1)
+                                        <div class="col-12">
+                                            @if (Session::has('coupon_message'))
+                                                <div class="alert alert-danger">
+                                                    <strong>{{ Session::get('coupon_message') }}</strong>
+                                                </div>
+                                            @endif
+                                            <div class="coupon-all">
+                                                <div class="coupon">
+                                                    <input id="coupon_code" class="input-text" name="coupon_code"
+                                                        value="" placeholder="Coupon code" type="text"
+                                                        wire:model="couponCode">
+                                                    <input class="button" name="apply_coupon" value="Apply coupon"
+                                                        wire:click.prevent="applyCouponCode">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
-                            </div>
+                            @endif
+
                             <div class="row">
                                 <div class="col-md-5 ml-auto">
                                     <div class="cart-page-total">
                                         <h2>Cart totals</h2>
                                         <ul>
                                             <li>Subtotal <span>${{ Cart::instance('cart')->subtotal() }}</span></li>
-                                            <li>Tax
-                                                ({{ config('cart.tax') }}%)<span>${{ Cart::instance('cart')->tax() }}</span>
-                                            </li>
-                                            <li>Shipping <span>Free</span></li>
-                                            <li>Total <span>${{ Cart::instance('cart')->total() }}</span></li>
+                                            @if (Session::has('coupon'))
+                                                <li>Discount
+                                                    ({{ Session::get('coupon')['code'] }}) <a href="#"
+                                                        wire:click.prevent="removeCoupon"><i class="fa fa-times"
+                                                            aria-hidden="true"
+                                                            style="color: red"></i></a><span>-${{ number_format($discount, 2) }}</span>
+                                                </li>
+                                                <li>Tax
+                                                    ({{ config('cart.tax') }}%)<span>${{ number_format($taxAfterDiscount, 2) }}</span>
+                                                </li>
+                                                <li>Subtotal with Discount
+                                                    <span>${{ number_format($subtotalAfterDiscount, 2) }}</span>
+                                                </li>
+                                                <li>Total <span>${{ number_format($totalAfterDiscount, 2) }}</span>
+                                                </li>
+                                            @else
+                                                <li>Tax
+                                                    ({{ config('cart.tax') }}%)<span>${{ Cart::instance('cart')->tax() }}</span>
+                                                </li>
+                                                <li>Shipping <span>Free</span></li>
+                                                <li>Total <span>${{ Cart::instance('cart')->total() }}</span></li>
+                                            @endif
+
                                         </ul>
                                         <a href="#">Proceed to checkout</a>
                                     </div>
