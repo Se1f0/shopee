@@ -9,7 +9,7 @@ class Shipping extends Model
 {
     use HasFactory;
 
-    protected $table = 'shipping';
+    protected $table = 'shippings';
 
     public function order()
     {

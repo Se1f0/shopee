@@ -37,9 +37,9 @@
                         class="li-button li-button-dark li-button-fullwidth li-button-sm">
                         <span>View Full Cart</span>
                     </a>
-                    <a href="{{ route('shop.checkout') }}" class="li-button li-button-fullwidth li-button-sm">
+                    {{-- <a href="{{ route('shop.checkout') }}" class="li-button li-button-fullwidth li-button-sm">
                         <span>Checkout</span>
-                    </a>
+                    </a> --}}
                 </div>
             @else
                 <center>
