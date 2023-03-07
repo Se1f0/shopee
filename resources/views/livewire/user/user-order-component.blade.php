@@ -17,9 +17,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-13">
-                        @if (Session::has('message'))
+                        @if (Session::has('order_message'))
                             <div class="alert alert-success">
-                                <strong>Success | {{ Session::get('message') }}</strong>
+                                <strong>Success | {{ Session::get('order_message') }}</strong>
                             </div>
                         @endif
                         <form action="#">

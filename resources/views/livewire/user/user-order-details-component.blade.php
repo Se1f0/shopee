@@ -16,7 +16,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <button type="button" class="btn btn-success float-right mb-10"
+                        onclick="location.href='{{ route('user.orders') }}'">All Orders
+                    </button>
+                    @if ($order->status != 'canceled' && $order->status != 'delivered')
+                        <button type="button" class="btn btn-danger float-right mb-10 mr-10"
+                            wire:click.prevent="cancelOrder">Cancel Order
+                        </button>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <form action="#">
+                        <div class="row mb-50">
+                            <div class="col-md-12 mr-auto">
+                                <div class="cart-page-total">
+                                    <h2>Order Details</h2>
+                                    <ul>
+                                        <li>Order ID <span>{{ $order->id }}</span></li>
+                                        <li>Order Date<span>{{ $order->created_at }}</span></li>
+                                        <li>Status<span>{{ $order->status }}</span></li>
+                                        @if ($order->status == 'delivered')
+                                            <li>Delivery Date<span>{{ $order->delivered_date }}</span></li>
+                                        @elseif ($order->status == 'canceled')
+                                            <li>Canceled Date<span>{{ $order->canceled_date }}</span></li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <div class="table-content table-responsive">
                             <h2>Ordered Items</h2>
                             <table class="table">
