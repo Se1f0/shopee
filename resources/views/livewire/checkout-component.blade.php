@@ -346,19 +346,19 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Province <span class="required">*</span></label>
-                                        <input placeholder="" type="text" wire:model="province">
+                                        <label>Town / City <span class="required">*</span></label>
+                                        <input type="text" wire:model="city">
                                     </div>
-                                    @error('province')
+                                    @error('city')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Town / City <span class="required">*</span></label>
-                                        <input type="text" wire:model="city">
+                                        <label>Province <span class="required">*</span></label>
+                                        <input placeholder="" type="text" wire:model="province">
                                     </div>
-                                    @error('city')
+                                    @error('province')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
@@ -734,19 +734,19 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Province <span class="required">*</span></label>
-                                                <input type="text" wire:model="s_province">
+                                                <label>Town / City <span class="required">*</span></label>
+                                                <input type="text" wire:model="s_city">
                                             </div>
-                                            @error('s_province')
+                                            @error('s_city')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
-                                                <label>Town / City <span class="required">*</span></label>
-                                                <input type="text" wire:model="s_city">
+                                                <label>Province <span class="required">*</span></label>
+                                                <input type="text" wire:model="s_province">
                                             </div>
-                                            @error('s_city')
+                                            @error('s_province')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
