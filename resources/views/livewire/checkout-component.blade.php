@@ -817,11 +817,11 @@
                                     <p>Pay with cash upon delivery.</p>
                                 </div>
                             @endif
-                            <div class="custom-control custom-radio mt-20">
+                            {{-- <div class="custom-control custom-radio mt-20">
                                 <input type="radio" id="paypalpayment" name="paymentmethod" value="card"
                                     class="custom-control-input" wire:model="paymentmode" />
                                 <label class="custom-control-label" for="paypalpayment">Credit Card</label>
-                            </div>
+                            </div> --}}
                             @error('paymentmode')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror

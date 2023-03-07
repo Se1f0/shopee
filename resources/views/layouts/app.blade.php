@@ -188,6 +188,7 @@
                                                             <li><a href="{{ route('admin.home.slider') }}">Home Slider</a>
                                                             <li><a href="{{ route('admin.sale') }}">Sale Settings</a>
                                                             <li><a href="{{ route('admin.coupons') }}">Coupons</a>
+                                                            <li><a href="{{ route('admin.orders') }}">Manage Orders</a>
                                                             </li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
