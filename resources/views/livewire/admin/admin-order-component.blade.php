@@ -97,14 +97,14 @@
                                                     class="amount">{{ $order->created_at }}</span>
                                             </td>
                                             <td class="li-product-price">
-                                                <button type="button" class="btn btn-warning mb-10"
-                                                    onclick="location.href='{{ route('admin.category.edit', ['category_id' => $order->id]) }}'">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                                                <button type="button" class="btn btn-info"
+                                                    onclick="location.href='{{ route('admin.order.details', ['order_id' => $order->id]) }}'">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i> Details
                                                 </button>
-                                                <button type="button" class="btn btn-danger"
+                                                {{-- <button type="button" class="btn btn-danger"
                                                     onclick="deleteConfirmation({{ $order->id }})">
                                                     <i class="fa fa-trash" aria-hidden="true"></i> Delete
-                                                </button>
+                                                </button> --}}
                                             </td>
                                         </tr>
                                     @endforeach
