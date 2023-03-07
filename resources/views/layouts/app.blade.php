@@ -201,6 +201,7 @@
                                                     @else
                                                         <ul class="hb-dropdown">
                                                             <li><a href="{{ route('user.dashboard') }}">Dashboardd</a></li>
+                                                            <li><a href="{{ route('user.orders') }}">My Orders</a></li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
                                                                     @csrf
