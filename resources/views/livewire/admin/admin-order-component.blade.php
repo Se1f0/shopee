@@ -16,9 +16,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-13">
-                    @if (Session::has('message'))
+                    @if (Session::has('order_message'))
                         <div class="alert alert-success">
-                            <strong>Success | {{ Session::get('message') }}</strong>
+                            <strong>Success | {{ Session::get('order_message') }}</strong>
                         </div>
                     @endif
                     <form action="#">
@@ -98,8 +98,10 @@
                                                         Status
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Delivered</a>
-                                                        <a class="dropdown-item" href="#">Canceled</a>
+                                                        <a class="dropdown-item" href="#"
+                                                            wire:click.prevent="updateOrderStatus({{ $order->id }},'delivered')">Delivered</a>
+                                                        <a class="dropdown-item" href="#"
+                                                            wire:click.prevent="updateOrderStatus({{ $order->id }},'canceled')">Canceled</a>
                                                     </div>
                                                 </div>
                                             </td>
