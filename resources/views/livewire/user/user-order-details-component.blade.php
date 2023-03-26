@@ -56,6 +56,7 @@
                                         <th class="li-product-price">Unit Price</th>
                                         <th class="li-product-quantity">Quantity</th>
                                         <th class="li-product-subtotal">Total</th>
+                                        <th class="li-product-quantity">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,6 +78,14 @@
                                             </td>
                                             <td class="product-subtotal"><span
                                                     class="amount">${{ $item->price * $item->quantity }}</span></td>
+                                            @if ($order->status == 'delivered' && $item->rstatus == false)
+                                                <td class="li-product-price">
+                                                    <button type="button" class="btn btn-warning mb-10"
+                                                        onclick="location.href='{{ route('user.review', ['order_item_id' => $item->id]) }}'">
+                                                        <i class="fa fa-star" aria-hidden="true"></i> Review
+                                                    </button>
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>

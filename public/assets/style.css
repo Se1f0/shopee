@@ -5456,6 +5456,68 @@ span.required {
 .small-version {
   display: none;
 }
+
+.wrap-product-detail .comment-form-rating>span{
+    font-size: 14px;
+    line-height: 20px;
+    display: block;
+    float: left;
+    margin-right: 7px;
+    color: #666;
+}
+.wrap-product-detail .comment-form-rating ~ p{
+    margin-bottom: 0 !important;
+}
+.wrap-product-detail .comment-form-rating p.stars{
+    display: inline-block;
+    margin-bottom: 0 !important;
+}
+.comment-form-rating .stars input[type=radio]{
+    display: none;
+}
+.comment-form-rating .stars label{
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0 2px;
+}
+.comment-form-rating .stars label::before{
+    content: "\f005";
+    font-family: FontAwesome;
+    font-size: 15px;
+    /*color: #e6e6e6;*/
+    color: #efce4a;
+}
+
+.wrap-product-detail .comment-form-rating p.stars{
+    display: inline-block;
+    margin-bottom: 0 !important;
+}
+.comment-form-rating .stars input[type=radio]{
+    display: none;
+}
+.comment-form-rating .stars label{
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0 2px;
+}
+.comment-form-rating .stars label::before{
+    content: "\f005";
+    font-family: FontAwesome;
+    font-size: 15px;
+    /*color: #e6e6e6;*/
+    color: #efce4a;
+}
+.comment-form-rating .stars input[type=radio]:checked ~ label::before{
+    color: #e6e6e6 ;
+}
+.comment-form-rating .stars:hover label::before{
+    color: #efce4a !important;
+}
+.comment-form-rating .stars label:hover ~ label::before{
+    color: #e6e6e6 !important;
+}
 /*----------------------------------------------------------------------------------------------------*/
 /*------------------------------------------> The End <-----------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------*/
