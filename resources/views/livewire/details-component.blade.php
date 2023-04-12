@@ -90,11 +90,17 @@
                                     @php
                                         $avgRating = 0;
                                     @endphp
-                                    @foreach ($product->orderItems->where('rstatus', 1) as $oredrItem)
+                                    @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
                                         @php
-                                            $avgRating = $avgRating + $oredrItem->review->rating;
+                                            $avgRating = $avgRating + $orderItem->review->rating;
                                         @endphp
                                     @endforeach
+                                    @if ($product->orderItems->where('rstatus', 1)->count() != 0)
+                                        @php
+                                            $avgRating = $avgRating / $product->orderItems->where('rstatus', 1)->count();
+                                            $avgRating = ceil($avgRating);
+                                        @endphp
+                                    @endif
                                     @for ($i = 1; $i <= 5; $i++)
                                         @if ($i <= $avgRating)
                                             <li><i class="fa fa-star"></i></li>
@@ -102,7 +108,6 @@
                                             <li class="no-star"><i class="fa fa-star-o"></i></li>
                                         @endif
                                     @endfor
-
                                     {{-- <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                     <li class="no-star"><i class="fa fa-star-o"></i></li>
@@ -299,11 +304,17 @@
                                                             @php
                                                                 $avgRating = 0;
                                                             @endphp
-                                                            @foreach ($rproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                            @foreach ($rproduct->orderItems->where('rstatus', 1) as $orderItem)
                                                                 @php
-                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                    $avgRating = $avgRating + $orderItem->review->rating;
                                                                 @endphp
                                                             @endforeach
+                                                            @if ($rproduct->orderItems->where('rstatus', 1)->count() != 0)
+                                                                @php
+                                                                    $avgRating = $avgRating / $rproduct->orderItems->where('rstatus', 1)->count();
+                                                                    $avgRating = ceil($avgRating);
+                                                                @endphp
+                                                            @endif
                                                             @for ($i = 1; $i <= 5; $i++)
                                                                 @if ($i <= $avgRating)
                                                                     <li><i class="fa fa-star"></i></li>
@@ -394,11 +405,17 @@
                                                             @php
                                                                 $avgRating = 0;
                                                             @endphp
-                                                            @foreach ($nproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                            @foreach ($nproduct->orderItems->where('rstatus', 1) as $orderItem)
                                                                 @php
-                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                    $avgRating = $avgRating + $orderItem->review->rating;
                                                                 @endphp
                                                             @endforeach
+                                                            @if ($nproduct->orderItems->where('rstatus', 1)->count() != 0)
+                                                                @php
+                                                                    $avgRating = $avgRating / $nproduct->orderItems->where('rstatus', 1)->count();
+                                                                    $avgRating = ceil($avgRating);
+                                                                @endphp
+                                                            @endif
                                                             @for ($i = 1; $i <= 5; $i++)
                                                                 @if ($i <= $avgRating)
                                                                     <li><i class="fa fa-star"></i></li>

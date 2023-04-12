@@ -109,11 +109,17 @@
                                                                             @php
                                                                                 $avgRating = 0;
                                                                             @endphp
-                                                                            @foreach ($product->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                            @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
                                                                                 @php
-                                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                                    $avgRating = $avgRating + $orderItem->review->rating;
                                                                                 @endphp
                                                                             @endforeach
+                                                                            @if ($product->orderItems->where('rstatus', 1)->count() != 0)
+                                                                                @php
+                                                                                    $avgRating = $avgRating / $product->orderItems->where('rstatus', 1)->count();
+                                                                                    $avgRating = ceil($avgRating);
+                                                                                @endphp
+                                                                            @endif
                                                                             @for ($i = 1; $i <= 5; $i++)
                                                                                 @if ($i <= $avgRating)
                                                                                     <li><i class="fa fa-star"></i></li>
@@ -220,11 +226,17 @@
                                                                             @php
                                                                                 $avgRating = 0;
                                                                             @endphp
-                                                                            @foreach ($product->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                            @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
                                                                                 @php
-                                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                                    $avgRating = $avgRating + $orderItem->review->rating;
                                                                                 @endphp
                                                                             @endforeach
+                                                                            @if ($product->orderItems->where('rstatus', 1)->count() != 0)
+                                                                                @php
+                                                                                    $avgRating = $avgRating / $product->orderItems->where('rstatus', 1)->count();
+                                                                                    $avgRating = ceil($avgRating);
+                                                                                @endphp
+                                                                            @endif
                                                                             @for ($i = 1; $i <= 5; $i++)
                                                                                 @if ($i <= $avgRating)
                                                                                     <li><i class="fa fa-star"></i></li>
