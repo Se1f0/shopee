@@ -85,6 +85,12 @@
                                                         <i class="fa fa-star" aria-hidden="true"></i> Review
                                                     </button>
                                                 </td>
+                                            @else
+                                                <td class="li-product-price">
+                                                    <button type="button" class="btn btn-light mb-10" disabled>
+                                                        <i class="fa fa-star" aria-hidden="true"></i> Review
+                                                    </button>
+                                                </td>
                                             @endif
                                         </tr>
                                     @endforeach

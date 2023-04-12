@@ -355,17 +355,27 @@
                                                     <div class="product_desc_info">
                                                         <div class="product-review">
                                                             <h5 class="manufacturer">
-                                                                <a href="shop-left-sidebar.html">Graphic Corner</a>
+                                                                <a href="shop-left-sidebar.html">{{ $lproduct->orderItems->where('rstatus', 1)->count() }}
+                                                                    review</a>
                                                             </h5>
                                                             <div class="rating-box">
                                                                 <ul class="rating">
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
+                                                                    @php
+                                                                        $avgRating = 0;
+                                                                    @endphp
+                                                                    @foreach ($lproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                        @php
+                                                                            $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                        @endphp
+                                                                    @endforeach
+                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                        @if ($i <= $avgRating)
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                        @else
+                                                                            <li class="no-star"><i
+                                                                                    class="fa fa-star-o"></i></li>
+                                                                        @endif
+                                                                    @endfor
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -471,17 +481,27 @@
                                                     <div class="product_desc_info">
                                                         <div class="product-review">
                                                             <h5 class="manufacturer">
-                                                                <a href="shop-left-sidebar.html">Graphic Corner</a>
+                                                                <a href="shop-left-sidebar.html">{{ $fproduct->orderItems->where('rstatus', 1)->count() }}
+                                                                    review</a>
                                                             </h5>
                                                             <div class="rating-box">
                                                                 <ul class="rating">
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li><i class="fa fa-star-o"></i></li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
-                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
-                                                                    </li>
+                                                                    @php
+                                                                        $avgRating = 0;
+                                                                    @endphp
+                                                                    @foreach ($fproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                        @php
+                                                                            $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                        @endphp
+                                                                    @endforeach
+                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                        @if ($i <= $avgRating)
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                        @else
+                                                                            <li class="no-star"><i
+                                                                                    class="fa fa-star-o"></i></li>
+                                                                        @endif
+                                                                    @endfor
                                                                 </ul>
                                                             </div>
                                                         </div>

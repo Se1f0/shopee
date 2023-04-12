@@ -87,13 +87,28 @@
                             <span class="product-details-ref">Reference: {{ $product->SKU }}</span>
                             <div class="rating-box pt-20">
                                 <ul class="rating rating-with-review-item">
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
+                                    @php
+                                        $avgRating = 0;
+                                    @endphp
+                                    @foreach ($product->orderItems->where('rstatus', 1) as $oredrItem)
+                                        @php
+                                            $avgRating = $avgRating + $oredrItem->review->rating;
+                                        @endphp
+                                    @endforeach
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $avgRating)
+                                            <li><i class="fa fa-star"></i></li>
+                                        @else
+                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                        @endif
+                                    @endfor
+
+                                    {{-- <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
                                     <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                    <li class="review-item"><a href="#">Read Review</a></li>
-                                    <li class="review-item"><a href="#">Write Review</a></li>
+                                    <li class="no-star"><i class="fa fa-star-o"></i></li> --}}
+                                    <li class="product-details-ref">(
+                                        {{ $product->orderItems->where('rstatus', 1)->count() }} review)</li>
                                 </ul>
                             </div>
                             @if ($product->sale_price > 0 && $sale->status == 1 && $sale->sales_date > Carbon\Carbon::now())
@@ -361,15 +376,27 @@
                                             <div class="product_desc_info">
                                                 <div class="product-review">
                                                     <h5 class="manufacturer">
-                                                        <a href="product-details.html">Graphic Corner</a>
+                                                        <a href="product-details.html">{{ $rproduct->orderItems->where('rstatus', 1)->count() }}
+                                                            review</a>
                                                     </h5>
                                                     <div class="rating-box">
                                                         <ul class="rating">
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            @php
+                                                                $avgRating = 0;
+                                                            @endphp
+                                                            @foreach ($rproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                @php
+                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                @endphp
+                                                            @endforeach
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $avgRating)
+                                                                    <li><i class="fa fa-star"></i></li>
+                                                                @else
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    </li>
+                                                                @endif
+                                                            @endfor
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -444,15 +471,27 @@
                                             <div class="product_desc_info">
                                                 <div class="product-review">
                                                     <h5 class="manufacturer">
-                                                        <a href="product-details.html">Graphic Corner</a>
+                                                        <a href="product-details.html">{{ $nproduct->orderItems->where('rstatus', 1)->count() }}
+                                                            review</a>
                                                     </h5>
                                                     <div class="rating-box">
                                                         <ul class="rating">
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            @php
+                                                                $avgRating = 0;
+                                                            @endphp
+                                                            @foreach ($nproduct->orderItems->where('rstatus', 1) as $oredrItem)
+                                                                @php
+                                                                    $avgRating = $avgRating + $oredrItem->review->rating;
+                                                                @endphp
+                                                            @endforeach
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $avgRating)
+                                                                    <li><i class="fa fa-star"></i></li>
+                                                                @else
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i>
+                                                                    </li>
+                                                                @endif
+                                                            @endfor
                                                         </ul>
                                                     </div>
                                                 </div>
