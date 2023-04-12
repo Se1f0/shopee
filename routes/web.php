@@ -25,6 +25,7 @@ use App\http\Livewire\DetailsComponent;
 use App\http\Livewire\CategoryComponent;
 use App\http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\User\UserOrderComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
@@ -80,6 +81,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/order/{order_id}', UserOrderDetailsComponent::class)->name('user.order.details');
 
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
+
+    Route::get('/user/change-password', UserChangePasswordComponent::class)->name('user.changePassword');
 });
 
 Route::middleware(['auth', 'authadmin'])->group(function () {
