@@ -177,7 +177,7 @@
                                             <li><a href="/">Home</a></li>
                                             <li><a href="{{ route('shop') }}">Shop</a></li>
                                             <li><a href="contact.html">About us</a></li>
-                                            <li><a href="contact.html">Contact us</a></li>
+                                            <li><a href="{{ route('contact') }}">Contact us</a></li>
                                             @auth
                                                 <li class="dropdown-holder"><a href="#">My Account</a>
                                                     @if (Auth::user()->utype == 'ADM')
@@ -189,6 +189,7 @@
                                                             <li><a href="{{ route('admin.sale') }}">Sale Settings</a>
                                                             <li><a href="{{ route('admin.coupons') }}">Coupons</a>
                                                             <li><a href="{{ route('admin.orders') }}">Manage Orders</a>
+                                                            <li><a href="{{ route('admin.contact') }}">Manage Contacts</a>
                                                             </li>
                                                             <li>
                                                                 <form method="POST" action="{{ route('logout') }}">
@@ -353,7 +354,7 @@
                                                 <li><a href="#">Prices drop</a></li>
                                                 <li><a href="#">New products</a></li>
                                                 <li><a href="#">Best sales</a></li>
-                                                <li><a href="#">Contact us</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact us</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -366,7 +367,7 @@
                                                 <li><a href="#">Delivery</a></li>
                                                 <li><a href="#">Legal Notice</a></li>
                                                 <li><a href="#">About us</a></li>
-                                                <li><a href="#">Contact us</a></li>
+                                                <li><a href="{{ route('contact') }}">Contact us</a></li>
                                             </ul>
                                         </div>
                                     </div>

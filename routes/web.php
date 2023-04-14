@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
@@ -23,6 +24,7 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\http\Livewire\DetailsComponent;
 use App\http\Livewire\CategoryComponent;
+use App\Http\Livewire\ContactComponent;
 use App\http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
@@ -66,6 +68,8 @@ Route::get('/search', SearchComponent::class)->name('product.search');
 
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
+Route::get('/contact-us', ContactComponent::class)->name('contact');
+
 
 
 
@@ -108,6 +112,8 @@ Route::middleware(['auth', 'authadmin'])->group(function () {
 
     Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.orders');
     Route::get('/admin/order/{order_id}', AdminOrderDetailsComponent::class)->name('admin.order.details');
+
+    Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 });
 
 // Route::middleware('auth')->group(function () {
