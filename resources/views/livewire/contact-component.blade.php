@@ -32,17 +32,17 @@
                             parum claram anteposuerit litterarum formas human.</p>
                         <div class="single-contact-block">
                             <h4><i class="fa fa-fax"></i> Address</h4>
-                            <p>123 Main Street, Anytown, CA 12345 – USA</p>
+                            <p>{{ $settings->address }}</p>
                         </div>
                         <div class="single-contact-block">
                             <h4><i class="fa fa-phone"></i> Phone</h4>
-                            <p>Mobile: (08) 123 456 789</p>
-                            <p>Hotline: 1009 678 456</p>
+                            <p>Mobile: {{ $settings->phone }}</p>
+                            <p>Hotline: {{ $settings->phone2 }}</p>
                         </div>
                         <div class="single-contact-block last-child">
                             <h4><i class="fa fa-envelope-o"></i> Email</h4>
-                            <p>yourmail@domain.com</p>
-                            <p>support@hastech.company</p>
+                            <p>{{ $settings->email }}</p>
+                            <p>{{ $settings->email2 }}</p>
                         </div>
                     </div>
                 </div>
