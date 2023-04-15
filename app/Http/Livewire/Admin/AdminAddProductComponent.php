@@ -24,6 +24,7 @@ class AdminAddProductComponent extends Component
     public $featured = 0;
     public $quantity;
     public $image;
+    public $images;
     public $category_id;
 
     public function generateSlug()
@@ -59,6 +60,7 @@ class AdminAddProductComponent extends Component
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
+
         $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
         $resizedImageLarge = Image::make($this->image->getRealPath());
         $resizedImageSmall = Image::make($this->image->getRealPath());
@@ -69,6 +71,25 @@ class AdminAddProductComponent extends Component
         $resizedImageLarge->save($path_large);
         $resizedImageSmall->save($path_small);
         $product->image = $imageName;
+
+        if ($this->images) {
+            $imagesName = '';
+            foreach ($this->images as $key => $image) {
+                $imageName = Carbon::now()->timestamp . $key . '.' . $image->extension();
+                $resizedImageLarge = Image::make($image->getRealPath());
+                $resizedImageSmall = Image::make($image->getRealPath());
+                $resizedImageLarge->resize(300, 300);
+                $resizedImageSmall->resize(150, 150);
+                $path_large = public_path() . '\assets\images\product\large-size\\' . $imageName;
+                $path_small = public_path() . '\assets\images\product\small-size\\' . $imageName;
+                $resizedImageLarge->save($path_large);
+                $resizedImageSmall->save($path_small);
+                $imagesName = $imagesName . ',' . $imageName;
+            }
+            $imgs = substr($imagesName, 1);
+            $product->images = $imgs;
+        }
+
         $product->category_id = $this->category_id;
         $product->save();
         session()->flash('message', 'Product has been added successfully!');

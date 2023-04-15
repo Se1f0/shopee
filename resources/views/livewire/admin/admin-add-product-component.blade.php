@@ -129,6 +129,19 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-20">
+                                    <label>Images</label>
+                                    <input class="mb-0" type="file" name="images" placeholder="Images"
+                                        wire:model="images" multiple>
+                                    @if ($images)
+                                        @foreach ($images as $image)
+                                            <img src="{{ $image->temporaryUrl() }}" width="120">
+                                        @endforeach
+                                    @endif
+                                    @error('images')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-20">
                                     <label for="category_id">Category</label>
                                     <select class="form-control" name="category_id" wire:model="category_id">
                                         <option value="">Select Category</option>

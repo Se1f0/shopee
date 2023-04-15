@@ -23,58 +23,37 @@
             <div class="row single-product-area">
                 <div class="col-lg-5 col-md-6">
                     <!-- Product Details Left -->
+                    @php
+                        $images = explode(',', $product->images);
+                    @endphp
                     <div class="product-details-left">
                         <div class="product-details-images slider-navigation-1">
                             <div class="lg-image">
                                 <img src="{{ asset('assets/images/product/large-size') }}/{{ $product->image }}"
                                     alt="{{ $product->name }}">
                             </div>
-                            <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size/product-2.jpg') }}"
-                                    alt="product image">
-                            </div>
-                            <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size/product-3.jpg') }}"
-                                    alt="product image">
-                            </div>
-                            <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size/product-4.jpg') }}"
-                                    alt="product image">
-                            </div>
-                            <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size/product-5.jpg') }}"
-                                    alt="product image">
-                            </div>
-                            <div class="lg-image">
-                                <img src="{{ asset('assets/images/product/large-size/product-6.jpg') }}"
-                                    alt="product image">
-                            </div>
+                            @foreach ($images as $image)
+                                @if ($image)
+                                    <div class="lg-image">
+                                        <img src="{{ asset('assets/images/product/large-size') }}/{{ $image }}"
+                                            alt="{{ $product->name }}">
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                         <div class="product-details-thumbs slider-thumbs-1">
                             <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-1.jpg') }}"
-                                    alt="product image thumb">
+                                    src="{{ asset('assets/images/product/small-size') }}/{{ $product->image }}"
+                                    alt="{{ $product->name }}">
                             </div>
-                            <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-2.jpg') }}"
-                                    alt="product image thumb">
-                            </div>
-                            <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-3.jpg') }}"
-                                    alt="product image thumb">
-                            </div>
-                            <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-4.jpg') }}"
-                                    alt="product image thumb">
-                            </div>
-                            <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-5.jpg') }}"
-                                    alt="product image thumb">
-                            </div>
-                            <div class="sm-image"><img
-                                    src="{{ asset('assets/images/product/small-size/product-6.jpg') }}"
-                                    alt="product image thumb">
-                            </div>
+                            @foreach ($images as $image)
+                                @if ($image)
+                                    <div class="sm-image"><img
+                                            src="{{ asset('assets/images/product/small-size') }}/{{ $image }}"
+                                            alt="{{ $product->name }}">
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                     <!--// Product Details Left -->
