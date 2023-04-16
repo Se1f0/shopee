@@ -132,6 +132,25 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-20">
+                                    <label>Product Gallery</label>
+                                    <input class="mb-0" type="file" name="images"
+                                        placeholder="Product Gallery" wire:model="newimages" multiple>
+                                    @if ($newimages)
+                                        @foreach ($newimages as $newimage)
+                                            @if ($newimage)
+                                                <img src="{{ $newimage->temporaryUrl() }}" width="120">
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        @foreach ($images as $image)
+                                            @if ($image)
+                                                <img src="{{ asset('assets/images/product/small-size') }}/{{ $image }}"
+                                                    width="120">
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <div class="col-md-12 mb-20">
                                     <label for="category_id">Category</label>
                                     <select class="form-control" name="category_id" wire:model="category_id">
                                         <option value="">Select Category</option>

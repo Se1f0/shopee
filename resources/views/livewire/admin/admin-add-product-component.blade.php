@@ -129,9 +129,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mb-20">
-                                    <label>Images</label>
-                                    <input class="mb-0" type="file" name="images" placeholder="Images"
-                                        wire:model="images" multiple>
+                                    <label>Product Gallery</label>
+                                    <input class="mb-0" type="file" name="images"
+                                        placeholder="Product Gallery" wire:model="images" multiple>
                                     @if ($images)
                                         @foreach ($images as $image)
                                             <img src="{{ $image->temporaryUrl() }}" width="120">

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -25,8 +26,10 @@ class AdminEditProductComponent extends Component
     public $featured = 0;
     public $quantity;
     public $image;
+    public $images;
     public $category_id;
     public $newimage;
+    public $newimages;
 
     public function mount($product_id)
     {
@@ -43,7 +46,29 @@ class AdminEditProductComponent extends Component
         $this->featured = $product->featured;
         $this->quantity = $product->quantity;
         $this->image = $product->image;
+        $this->images = explode(',', $product->images);
         $this->category_id = $product->category_id;
+    }
+
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required',
+            'slug' => ['required', Rule::unique('products')->ignore($this->product_id)],
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'sku' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'category_id' => 'required',
+        ]);
+        if ($this->newimage) {
+            $this->validateOnly($fields, [
+                'newimage' => 'required',
+            ]);
+        }
     }
 
     public function generateSlug()
@@ -55,18 +80,22 @@ class AdminEditProductComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required',
+            'slug' => ['required', Rule::unique('products')->ignore($this->product_id)],
             'short_description' => 'required',
             'description' => 'required',
-            'regular_price' => 'required',
-            'sale_price' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
             'sku' => 'required',
             'stock_status' => 'required',
             'featured' => 'required',
-            'quantity' => 'required',
-            'image' => 'required',
+            'quantity' => 'required|numeric',
             'category_id' => 'required'
         ]);
+        if ($this->newimage) {
+            $this->validate([
+                'newimage' => 'required',
+            ]);
+        }
 
         $product = Product::find($this->product_id);
         $product->name = $this->name;
@@ -79,6 +108,7 @@ class AdminEditProductComponent extends Component
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
+
         if ($this->newimage) {
             unlink('assets/images/product/large-size/' . $product->image);
             unlink('assets/images/product/small-size/' . $product->image);
@@ -93,8 +123,38 @@ class AdminEditProductComponent extends Component
             $resizedImageSmall->save($path_small);
             $product->image = $imageName;
         }
+
+        if ($this->newimages) {
+            if ($product->images) {
+                $images = explode(",", $product->images);
+                foreach ($images as $image) {
+                    if ($image) {
+                        unlink('assets/images/product/large-size/' . $image);
+                        unlink('assets/images/product/small-size/' . $image);
+                    }
+                }
+            }
+
+            $imagesName = '';
+            foreach ($this->newimages as $key => $image) {
+                $imageName = Carbon::now()->timestamp . $key . '.' . $image->extension();
+                $resizedImageLarge = Image::make($image->getRealPath());
+                $resizedImageSmall = Image::make($image->getRealPath());
+                $resizedImageLarge->resize(300, 300);
+                $resizedImageSmall->resize(150, 150);
+                $path_large = public_path() . '\assets\images\product\large-size\\' . $imageName;
+                $path_small = public_path() . '\assets\images\product\small-size\\' . $imageName;
+                $resizedImageLarge->save($path_large);
+                $resizedImageSmall->save($path_small);
+                $imagesName = $imagesName . ',' . $imageName;
+            }
+            $imgs = substr($imagesName, 1);
+            $product->images = $imgs;
+        }
+
         $product->category_id = $this->category_id;
         $product->save();
+        redirect()->route('admin.product.edit', ['product_id' => $this->product_id]);
         session()->flash('message', 'Product has been updated successfully!');
     }
 
