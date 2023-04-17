@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Sale;
 use Livewire\Component;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class HomeComponent extends Component
 {
@@ -47,6 +48,9 @@ class HomeComponent extends Component
         $fproducts = Product::where('featured', 1)->inRandomOrder()->get()->take(8);
         $sproducts = Product::where('sale_price', '>', 0)->inRandomOrder()->get()->take(8);
         $sale = Sale::find(1);
+        if (Auth::check()) {
+            Cart::instance('cart')->restore(Auth::user()->email);
+        }
         return view('livewire.home-component', ['slides' => $slides, 'lproducts' => $lproducts, 'fproducts' => $fproducts, 'categories' => $categories, 'sproducts' => $sproducts, 'sale' => $sale]);
     }
 }

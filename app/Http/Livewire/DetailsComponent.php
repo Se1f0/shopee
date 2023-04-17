@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Sale;
 use Livewire\Component;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class DetailsComponent extends Component
 {
@@ -61,6 +62,10 @@ class DetailsComponent extends Component
         $nproducts = Product::Latest()->take(5)->get();
 
         $sale = Sale::find(1);
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
 
         return view('livewire.details-component', ['product' => $product, 'rproducts' => $rproducts, 'nproducts' => $nproducts, 'sale' => $sale]);
     }

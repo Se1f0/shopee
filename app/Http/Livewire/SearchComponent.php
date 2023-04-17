@@ -8,6 +8,7 @@ use App\Models\Sale;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 
 class SearchComponent extends Component
 {
@@ -79,6 +80,10 @@ class SearchComponent extends Component
         $categories = Category::orderBy('name', 'ASC')->get();
 
         $sale = Sale::find(1);
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
 
         return view('livewire.search-component', [
             'products' => $products,
