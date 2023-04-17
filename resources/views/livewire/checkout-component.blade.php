@@ -17,7 +17,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <form action="#" id="orderForm" wire:submit.prevent="placeOrder">
+                    <form action="#" id="orderForm" wire:submit.prevent="placeOrder"
+                        onsubmit="$('#processing').show();">
                         <div class="checkbox-form">
                             <h3>Billing Details</h3>
                             <div class="row">
@@ -825,6 +826,13 @@
                             @error('paymentmode')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
+                            @if ($errors->isEmpty())
+                                <div wire:ignore id="processing"
+                                    style="font-size:22px; margin-bottom:20px; padding-left:37px; color:green; display:none">
+                                    <i class="fa fa-spinner fa-pulse fa-fw"></i>
+                                    <span>Processing...</span>
+                                </div>
+                            @endif
                             <div class="order-button-payment">
                                 <input value="Place order" type="submit" form="orderForm">
                             </div>
