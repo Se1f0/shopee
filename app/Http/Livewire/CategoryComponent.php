@@ -84,6 +84,7 @@ class CategoryComponent extends Component
 
         if (Auth::check()) {
             Cart::instance('cart')->store(Auth::user()->email);
+            Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
         return view('livewire.category-component', [
