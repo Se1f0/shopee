@@ -203,6 +203,7 @@
                                                     @else
                                                         <ul class="hb-dropdown">
                                                             <li><a href="{{ route('user.dashboard') }}">Dashboardd</a></li>
+                                                            <li><a href="{{ route('user.profile') }}">My Profile</a></li>
                                                             <li><a href="{{ route('user.orders') }}">My Orders</a></li>
                                                             <li><a href="{{ route('user.changePassword') }}">Change my
                                                                     password</a>
