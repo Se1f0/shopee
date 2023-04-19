@@ -12,7 +12,7 @@
     <div class="page-section mb-60">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+                <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30 mt-30">
                     <!-- My Account Page Start -->
                     <div class="myaccount-page-wrapper">
                         <!-- My Account Tab Menu Start -->
@@ -31,9 +31,9 @@
                                                 <div class="row">
                                                     <div class="col">My Profile</div>
                                                     <div class="col">
-                                                        {{-- <a href="{{ route('user.editprofile') }}"
+                                                        <a href="{{ route('user.editProfile') }}"
                                                             class="btn btn-danger pull-right" role="button">Update
-                                                            Profile</a> --}}
+                                                            Profile</a>
                                                     </div>
                                                 </div>
                                             </h3>

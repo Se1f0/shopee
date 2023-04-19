@@ -30,6 +30,7 @@ use App\http\Livewire\SearchComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
+use App\Http\Livewire\User\UserEditProfileComponent;
 use App\Http\Livewire\User\UserOrderComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -91,6 +92,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/change-password', UserChangePasswordComponent::class)->name('user.changePassword');
 
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+    Route::get('/user/profile/edit', UserEditProfileComponent::class)->name('user.editProfile');
 });
 
 Route::middleware(['auth', 'authadmin'])->group(function () {
