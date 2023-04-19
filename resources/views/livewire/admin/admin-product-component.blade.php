@@ -18,7 +18,11 @@
             Product</button> --}}
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
+                    <input type="text" class="form-control float-left mb-10" placeholder="Search..."
+                        wire:model="searchTerm" />
+                </div>
+                <div class="col-6">
                     <button type="button" class="btn btn-success float-right mb-10"
                         onclick="location.href='{{ route('admin.product.add') }}'">Add New Product
                     </button>
@@ -36,7 +40,6 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-
                                         <th class="li-product-thumbnail">#</th>
                                         <th class="li-product-thumbnail">ID</th>
                                         <th class="li-product-thumbnail">images</th>
