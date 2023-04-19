@@ -217,8 +217,15 @@
                             {{ $product->name }}</h5>
                         @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
                             <div class="product-details-comment-block mb-10 mt-100">
-                                <img src="{{ asset('assets/images/product-details/1.jpg') }}"
-                                    alt="Product Manufacturer Image">
+                                @if ($orderItem->order->user->profile->image)
+                                    <img src="{{ asset('assets/images/profile') }}/{{ $orderItem->order->user->profile->image }}"
+                                        alt="{{ $orderItem->order->user->name }}" width="120">
+                                @else
+                                    <img src="{{ asset('assets/images/profile/default.png') }}"
+                                        alt="{{ $orderItem->order->user->name }}" width="120">
+                                @endif
+                                {{-- <img src="{{ asset('assets/images/product-details/1.jpg') }}"
+                                    alt="Product Manufacturer Image"> --}}
                                 <span> <em><strong>{{ $orderItem->order->user->name }}</strong></em> on
                                     <em><strong>{{ Carbon\Carbon::parse($orderItem->review->created_at)->format('d F Y g:i A') }}</strong></em></span>
                                 <div class="comment-review">
